@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
+
+
 
 class UserController extends Controller
 {
@@ -34,10 +37,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         // $request -> validated();
-        // dd($request -> except(['_token']));
         $this -> user -> create($request -> except(['_token', 'btn_submit'])); 
 
         return redirect() -> route('user.index') -> with('message', 'Cadastrado com Sucesso');
@@ -56,15 +58,30 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = $this -> user -> findOrFail($id);
+        return view('user.edit') -> with('data', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        $request -> validated();
+        $object = $this -> user::find($id);
+
+        $object -> nome = $request -> nome;
+        $object -> sobrenome = $request -> sobrenome;
+        $object -> usuario = $request -> usuario;
+        $object -> senha = $request -> senha;
+        $object -> email = $request -> email;
+        $object -> cep = $request -> cep;
+        $object -> endereco = $request -> endereco;
+        $object -> cidade = $request -> cidade;
+        $object -> estado = $request -> estado;
+
+        $object -> save();
+        return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
     /**
