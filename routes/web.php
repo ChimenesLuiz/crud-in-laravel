@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,4 +44,14 @@ Route::controller(ProfileController::class) -> group(function () {
     Route::get('/profile/edit/{id}', 'edit') -> name('profile.edit');
     Route::get('/profile/update/{id}', 'update') -> name('profile.update');
     Route::get('/profile/destroy/{id}', 'destroy') -> name('profile.destroy');
+});
+
+//USER
+Route::controller(ProductController::class) -> group(function () {
+    Route::get('/product', 'index') -> name('product.index');
+    Route::get('/product/create', 'create') -> name('product.create');
+    Route::get('/product/create/store', 'store') -> name('product.store');
+    Route::get('/product/edit/{id}', 'edit') -> name('product.edit');
+    Route::get('/product/update/{id}', 'update') -> name('product.update');
+    Route::get('/product/destroy/{id}', 'destroy') -> name('product.destroy');
 });

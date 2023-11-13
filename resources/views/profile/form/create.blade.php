@@ -14,6 +14,11 @@
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Usuarios</label>
         </div>
 
+          <div class="form-check form-switch" style="font-size: 25px">
+            <input class="form-check-input" name="perfil" type="checkbox" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Perfis</label>
+          </div>
+
         <div class="form-check form-switch" style="font-size: 25px">
           <input class="form-check-input" name="produto" type="checkbox" id="flexSwitchCheckChecked" checked>
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Produtos</label>
@@ -28,7 +33,7 @@
 
 
     <hr class="my-4">
-    
+    <br>
     <div class="d-flex justify-content-between">
 
       <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('profile.index')}}">Cancelar</a>

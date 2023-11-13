@@ -1,88 +1,42 @@
 
-<form action="{{route('user.update', ['id' => $data -> id])}}" novalidate>
-    @csrf
-    @include('user.form.validation')
-      <div class="row g-3">
-        <div class="col-sm-6">
-          <label for="firstName" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data -> nome}}" name="nome">
-        </div>
-  
-        <div class="col-sm-6">
-          <label for="lastName" class="form-label">Sobrenome</label>
-          <input type="text" class="form-control" id="lastName" placeholder="" value="{{$data -> sobrenome}}" name="sobrenome">
-        </div>
-  
-        <div class="col-12">
-          <label for="lastName" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="lastName" placeholder="" value="{{$data -> cpf}}"  name="cpf">
-        </div>
-  
-        
-        <div class="col-6">
-          <label for="username" class="form-label">Nome de usuario</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text">@</span>
-            <input type="text" class="form-control" id="username" value="{{$data -> usuario}}"  name="usuario">
-          </div>
-        </div>
-        <div class="col-6">
-          <label for="username" class="form-label">Sexo</label>
-          <select class="form-select" name="sexo">
-            <option value="feminino" {{($data -> sexo == 'feminino') ? 'selected' : ''}}>Feminino</option>
-            <option value="feminino" {{($data -> sexo == 'masculino') ? 'selected' : ''}}>Masculino</option>
-            <option value="feminino" {{($data -> sexo == 'apache') ? 'selected' : ''}}>Optimus Prime</option>
-          </select>
+<form action="{{route('profile.update', ['id' => $data -> id])}}" novalidate>
+  @csrf
+  @include('profile.form.validation')
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="firstName" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data -> nome}}" name="nome">
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="form-check form-switch" style="font-size: 25px">
+          <input class="form-check-input" name="usuario" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> usuario) === 'ON') ? 'checked' : ''}}>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Usuarios</label>
         </div>
 
-        <div class="col-12">
-          <label for="username" class="form-label">Perfil</label>
-          <select class="form-select" name="sexo">
-            <option value="feminino" {{($data -> perfil == 'cliente') ? 'selected' : ''}}>Cliente</option>
-            <option value="feminino" {{($data -> perfil == 'colaborador') ? 'selected' : ''}}>Colaborador</option>
-            <option value="feminino" {{($data -> perfil == 'admin') ? 'selected' : ''}}>Administrador</option>
-          </select>
+          <div class="form-check form-switch" style="font-size: 25px">
+            <input class="form-check-input" name="perfil" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> perfil) === 'ON') ? 'checked' : ''}}>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Perfis</label>
+          </div>
+
+        <div class="form-check form-switch" style="font-size: 25px">
+          <input class="form-check-input" name="produto" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> produto) === 'ON') ? 'checked' : ''}}>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Produtos</label>
         </div>
-        
-        <div class="col-12">
-          <label for="lastName" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="lastName" placeholder="" value="{{$data -> senha}}" name="senha">
-        </div>
-  
-        <div class="col-12">
-          {{-- <span class="text-muted">(Opcional)</span> --}}
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" value="{{$data -> email}}" >
-        </div>
-  
-        <div class="col-10">
-          <label for="address" class="form-label">CEP</label>
-          <input type="text" class="form-control" id="address" value="{{$data -> cep}}" name="cep" >
-        </div>
-  
-        <div class="d-flex col-2 justify-content-center mt-5">
-          <button class="btn btn-success w-75">Buscar</button>
-        </div>
-  
-        <div class="col-12">
-          <label for="address" class="form-label">Endereco</label>
-          <input type="text" class="form-control" id="address" value="{{$data -> endereco}}" name="endereco">
-        </div>
-  
-        <div class="col-6">
-          <label for="address" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="address" value="{{$data -> cidade}}" name="cidade" >
-        </div>
-        
-        <div class="col-6">
-          <label for="address" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="address" value="{{$data -> estado}}" name="estado" >
+
+        <div class="form-check form-switch" style="font-size: 25px">
+          <input class="form-check-input" name="venda" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> venda) === 'ON') ? 'checked' : ''}}>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Vendas</label>
         </div>
       </div>
-      <hr class="my-4">
-      <div class="d-flex justify-content-between">
-  
-        <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('user.index')}}">Cancelar</a>
-        <input class="w-25 btn btn-primary" type="submit" value="Editar">
-      </div>
-    </form>
+
+
+
+    <hr class="my-4">
+    
+    <div class="d-flex justify-content-between">
+
+      <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('profile.index')}}">Cancelar</a>
+      <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
+    </div>
+  </form>

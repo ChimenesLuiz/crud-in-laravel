@@ -8,6 +8,7 @@
     <tr>
         <th scope="col">Perfil</th>
         <th scope="col">Gerenciar Usuarios</th>
+        <th scope="col">Gerenciar Perfis</th>
         <th scope="col">Gerenciar Produtos</th>
         <th scope="col">Gerenciar Vendas</th>
         <th scope="col">Acoes</th>
@@ -18,6 +19,7 @@
         <tr>
             <td>{{$row -> nome}}</td>
             <td>{{$row -> usuario}}</td>
+            <td>{{$row -> perfil}}</td>
             <td>{{$row -> produto}}</td>
             <td>{{$row -> venda}}</td>
             <td>

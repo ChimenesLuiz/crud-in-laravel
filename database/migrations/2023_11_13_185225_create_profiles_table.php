@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 100);
             $table->enum('usuario', ['ON', 'OFF']) -> default('OFF');
+            $table->enum('perfil', ['ON', 'OFF']) -> default('OFF');
             $table->enum('produto', ['ON', 'OFF']) -> default('OFF');
             $table->enum('venda', ['ON', 'OFF']) -> default('OFF');
             $table->timestamps();

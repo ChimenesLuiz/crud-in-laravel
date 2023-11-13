@@ -71,14 +71,10 @@ class ProfileController extends Controller
         $object = $this -> profile::find($id);
 
         $object -> nome = $request -> nome;
-        $object -> sobrenome = $request -> sobrenome;
         $object -> usuario = $request -> usuario;
-        $object -> senha = $request -> senha;
-        $object -> email = $request -> email;
-        $object -> cep = $request -> cep;
-        $object -> endereco = $request -> endereco;
-        $object -> cidade = $request -> cidade;
-        $object -> estado = $request -> estado;
+        $object -> perfil = $request -> perfil;
+        $object -> produto = $request -> produto;
+        $object -> venda = $request -> venda;
 
         $object -> save();
         return redirect() -> route('profile.index') -> with('message', 'Editado com Sucesso!'); 
