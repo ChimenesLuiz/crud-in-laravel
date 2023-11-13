@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 120);
             $table->string('sobrenome', 200);
+            $table->string('cpf', 11);
             $table->string('usuario', 50);
-            $table->string('senha', 30);
+            $table->enum('sexo', ['masculino', 'feminino', 'apache']);
+            $table->enum('perfil', ['cliente', 'colaborador', 'admin']);
+            $table->string('senha', 255);
             $table->string('email', 150);
             $table->string('cep', 8);
             $table->string('endereco', 150);

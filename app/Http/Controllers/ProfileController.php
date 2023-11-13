@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Http\Requests\UserRequest;
+use App\Models\Profile;
+use App\Http\Requests\ProfileRequest;
 
 
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
-    public User $user;
+    public Profile $profile;
     
     public function __construct()
     {
-        $this -> user = new User();
+        $this -> profile = new Profile();
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = $this -> user -> all();
+        $profile = $this -> profile -> all();
 
-        return view('user.index') -> with('user', $user);
+        return view('profile.index') -> with('profile', $profile);
     }
 
     /**
@@ -31,18 +31,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('profile.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
+    public function store(ProfileRequest $request)
     {
-        // $request -> validated();
-        $this -> user -> create($request -> except(['_token', 'btn_submit'])); 
+        $request -> validated();
+        $this -> profile -> create($request -> except(['_token', 'btn_submit'])); 
 
-        return redirect() -> route('user.index') -> with('message', 'Cadastrado com Sucesso');
+        return redirect() -> route('profile.index') -> with('message', 'Cadastrado com Sucesso');
     }
 
     /**
@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        return view('user.show');
+        return view('profile.show');
     }
 
     /**
@@ -58,17 +58,17 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $data = $this -> user -> findOrFail($id);
-        return view('user.edit') -> with('data', $data);
+        $data = $this -> profile -> findOrFail($id);
+        return view('profile.edit') -> with('data', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(ProfileRequest $request, string $id)
     {
         $request -> validated();
-        $object = $this -> user::find($id);
+        $object = $this -> profile::find($id);
 
         $object -> nome = $request -> nome;
         $object -> sobrenome = $request -> sobrenome;
@@ -81,7 +81,7 @@ class UserController extends Controller
         $object -> estado = $request -> estado;
 
         $object -> save();
-        return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 
+        return redirect() -> route('profile.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
     /**
@@ -89,8 +89,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $this -> user -> destroy($id);
-        return redirect() -> route('user.index') -> with('message', 'Excluido com Sucesso');
+        $this -> profile -> destroy($id);
+        return redirect() -> route('profile.index') -> with('message', 'Excluido com Sucesso');
     }
-
 }
+

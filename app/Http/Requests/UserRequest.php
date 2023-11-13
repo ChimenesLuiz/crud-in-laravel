@@ -21,11 +21,15 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'nome' => 'required',
             // 'sobrenome' => ['required', new CpfValidationRule],
             'sobrenome' => 'required',
+            'cpf' => 'required',
             'usuario' => 'required',
+            'sexo' => 'required',
+            'perfil' => 'required',
             'senha' => 'required',
             'email' => 'required',
             'cep' => 'required',
@@ -40,7 +44,10 @@ class UserRequest extends FormRequest
         return [
             'nome.required' => 'Preencha o campo Nome',
             'sobrenome.required' => 'Preencha o campo Sobrenome',
+            'cpf.required' => 'Preencha o campo Cpf',
             'usuario.required' => 'Preencha o campo Nome de usuario',
+            'sexo.required' => 'Preencha o campo Sexo',
+            'perfil.required' => 'Preencha o campo Perfil',
             'senha.required' => 'Preencha o campo Senha',
             'email.required' => 'Preencha o campo Email',
             'cep.required' => 'Preencha o campo CEP',

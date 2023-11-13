@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +33,14 @@ Route::controller(UserController::class) -> group(function () {
     Route::get('/user/edit/{id}', 'edit') -> name('user.edit');
     Route::get('/user/update/{id}', 'update') -> name('user.update');
     Route::get('/user/destroy/{id}', 'destroy') -> name('user.destroy');
+});
+
+//USER
+Route::controller(ProfileController::class) -> group(function () {
+    Route::get('/profile', 'index') -> name('profile.index');
+    Route::get('/profile/create', 'create') -> name('profile.create');
+    Route::get('/profile/create/store', 'store') -> name('profile.store');
+    Route::get('/profile/edit/{id}', 'edit') -> name('profile.edit');
+    Route::get('/profile/update/{id}', 'update') -> name('profile.update');
+    Route::get('/profile/destroy/{id}', 'destroy') -> name('profile.destroy');
 });

@@ -19,7 +19,25 @@
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('user.index')}} "class="text-dark text-decoration-none">
                     <i class="bi bi-people"></i>
-                    USERS
+                    USER
+                </a>
+            </button>
+        </li>
+
+        <li class="container w-100">
+            <button class="btn btn-light w-100 mb-3">  
+                <a href="{{route('profile.index')}} "class="text-dark text-decoration-none">
+                    <i class="bi bi-people"></i>
+                    PROFILE
+                </a>
+            </button>
+        </li>
+        
+        <li class="container w-100">
+            <button class="btn btn-light w-100 mb-3">  
+                <a href="{{route('profile.index')}} "class="text-dark text-decoration-none">
+                    <i class="bi bi-box"></i>
+                    PRODUCT
                 </a>
             </button>
         </li>

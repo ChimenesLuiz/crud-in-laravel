@@ -4,19 +4,41 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public static function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        for ($c = 0; $c < 5; $c++)
+        {
+            DB::table('users')->insert([
+                'nome' => Str::random(10),
+                'sobrenome' => Str::random(10).'@gmail.com',
+                'cpf' => Str::random(11),
+                'usuario' => Str::random(10),
+                'sexo' => 'feminino',
+                'perfil' => 'colaborador',
+                'senha' => Hash::make('password'),
+                'email' => Str::random(10),
+                'cep' => Str::random(8),
+                'endereco' => Str::random(10),
+                'cidade' => Str::random(10),
+                'estado' => Str::random(10)
+            ]);
+    
+    
+            DB::table('profiles')->insert([
+                'nome' => Str::random(10),
+                'usuario' => 'OFF',
+                'produto' => 'OFF',
+                'venda' => 'OFF'
+            ]);
+        }
     }
 }

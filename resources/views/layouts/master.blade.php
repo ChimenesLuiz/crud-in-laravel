@@ -14,6 +14,10 @@
                     @yield('user.index')
                     @yield('user.create')
                     @yield('user.edit')
+
+                    @yield('profile.index')
+                    @yield('profile.create')
+                    @yield('profile.edit')
                 </div>
             </section>
         </main>
