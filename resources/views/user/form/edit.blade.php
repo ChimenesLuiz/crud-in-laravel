@@ -5,27 +5,15 @@
       <div class="row g-3">
         <div class="col-sm-6">
           <label for="firstName" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data -> nome}}" name="nome">
+          <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data -> name}}" name="name">
         </div>
   
         <div class="col-sm-6">
           <label for="lastName" class="form-label">Sobrenome</label>
-          <input type="text" class="form-control" id="lastName" placeholder="" value="{{$data -> sobrenome}}" name="sobrenome">
+          <input type="text" class="form-control" id="lastName" placeholder="" value="{{$data -> last_name}}" name="last_name">
         </div>
   
-        <div class="col-12">
-          <label for="lastName" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="lastName" placeholder="" value="{{$data -> cpf}}"  name="cpf">
-        </div>
-  
-        
-        <div class="col-6">
-          <label for="username" class="form-label">Nome de usuario</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text">@</span>
-            <input type="text" class="form-control" id="username" value="{{$data -> usuario}}"  name="usuario">
-          </div>
-        </div>
+
         <div class="col-6">
           <label for="username" class="form-label">Sexo</label>
           <select class="form-select" name="sexo">
@@ -35,19 +23,15 @@
           </select>
         </div>
 
-        <div class="col-12">
+        <div class="col-6">
           <label for="username" class="form-label">Perfil</label>
           <select class="form-select" name="sexo">
-            <option value="feminino" {{($data -> perfil == 'cliente') ? 'selected' : ''}}>Cliente</option>
-            <option value="feminino" {{($data -> perfil == 'colaborador') ? 'selected' : ''}}>Colaborador</option>
-            <option value="feminino" {{($data -> perfil == 'admin') ? 'selected' : ''}}>Administrador</option>
+            <option value="feminino" {{($data -> id_profile == 1) ? 'selected' : ''}}>Sem Perfil</option>
+            <option value="feminino" {{($data -> id_profile == 2) ? 'selected' : ''}}>Colaborador</option>
+            <option value="feminino" {{($data -> id_profile == 3) ? 'selected' : ''}}>Administrador</option>
           </select>
         </div>
         
-        <div class="col-12">
-          <label for="lastName" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="lastName" placeholder="" value="{{$data -> senha}}" name="senha">
-        </div>
   
         <div class="col-12">
           {{-- <span class="text-muted">(Opcional)</span> --}}

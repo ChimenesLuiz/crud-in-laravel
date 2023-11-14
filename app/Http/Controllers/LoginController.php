@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-
+use Laravel\Ui\Presets\React;
 
 class LoginController extends Controller
 {
@@ -58,20 +58,32 @@ class LoginController extends Controller
 
 
 
-    public function auth(Request $request){ 
+    public function auth($request){ 
  
         $request->validate([ 
             'email' => 'required', 
             'password' => 'required'
-        ]); 
- 
-        if(Auth::attempt($request->only('login', 'password'))){ 
-            return redirect() -> route('home.index'); 
-        } 
- 
+        ],
+        ['email.required' => 'Digite um email', 
+        'password.required' => 'Digite um senha']); 
+        $credentials = $request -> only('email', 'password');
+        $authenticated = Auth::attempt($credentials);
+        dd($authenticated);
+
+        if ($authenticated)
+        {
+            return redirect('login.index') -> withErrors('error', 'email ou senha invalidos');
+        }
+        return redirect() -> route('home.index');
+
+
         return redirect() -> route('login.index') -> withInput() -> withErrors([ 
             'email' => 'email incorreto' 
         ]); 
  
     } 
+    public function login(Request $request)
+    {
+        $this -> auth($request);
+    }
 }

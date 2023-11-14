@@ -28,6 +28,7 @@ class UserController extends Controller
         -> join('users', 'users.id_profile', '=', 'profiles.id')
         -> get();
 
+
         return view('user.index') -> with('data', $data);
     }
 
@@ -77,10 +78,8 @@ class UserController extends Controller
         $request -> validated();
         $object = $this -> user::find($id);
 
-        $object -> nome = $request -> nome;
-        $object -> sobrenome = $request -> sobrenome;
-        $object -> usuario = $request -> usuario;
-        $object -> senha = $request -> senha;
+        $object -> name = $request -> name;
+        $object -> last_name = $request -> last_name;
         $object -> email = $request -> email;
         $object -> cep = $request -> cep;
         $object -> endereco = $request -> endereco;

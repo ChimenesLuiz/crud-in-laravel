@@ -32,7 +32,19 @@ class DatabaseSeeder extends Seeder
     
     
         DB::table('profiles')->insert([
-            'name' => Str::random(10),
+            'name' => 'Sem Perfil',
+            'usuario' => 0,
+            'produto' => 0,
+            'venda' => 0
+        ]);
+        DB::table('profiles')->insert([
+            'name' => 'Colaborador',
+            'usuario' => 0,
+            'produto' => 1,
+            'venda' => 1
+        ]);
+        DB::table('profiles')->insert([
+            'name' => 'Administrador',
             'usuario' => 1,
             'produto' => 1,
             'venda' => 1

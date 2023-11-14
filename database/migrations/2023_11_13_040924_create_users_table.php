@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 120)  -> nullable();
             $table->string('last_name', 200)  -> nullable();
             $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
-            $table->unsignedBigInteger('id_profile');
+            $table->unsignedBigInteger('id_profile') -> default(1);
             $table->string('email', 150);
             $table->string('password', 255);
             $table->string('cep', 8) -> nullable();

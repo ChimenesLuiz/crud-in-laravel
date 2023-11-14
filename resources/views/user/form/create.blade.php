@@ -13,10 +13,6 @@
         <input type="text" class="form-control" id="lastName" placeholder="" value="" name="last_name">
       </div>
 
-      <div class="col-12">
-        <label for="lastName" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="lastName" placeholder="" value="" name="cpf">
-      </div>
 
       <div class="col-6">
         <label for="username" class="form-label">Sexo</label>
