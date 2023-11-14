@@ -15,30 +15,27 @@ class DatabaseSeeder extends Seeder
      */
     public static function run(): void
     {
-        for ($c = 0; $c < 5; $c++)
-        {
-            DB::table('users')->insert([
-                'nome' => Str::random(10),
-                'sobrenome' => Str::random(10).'@gmail.com',
-                'cpf' => Str::random(11),
-                'usuario' => Str::random(10),
-                'sexo' => 'feminino',
-                'id_perfil' => 1,
-                'senha' => Hash::make('password'),
-                'email' => Str::random(10),
-                'cep' => Str::random(8),
-                'endereco' => Str::random(10),
-                'cidade' => Str::random(10),
-                'estado' => Str::random(10)
-            ]);
+            // DB::table('users')->insert([
+            //     'nome' => Str::random(10),
+            //     'sobrenome' => Str::random(10).'@gmail.com',
+            //     'cpf' => Str::random(11),
+            //     'usuario' => Str::random(10),
+            //     'sexo' => 'feminino',
+            //     'id_perfil' => 1,
+            //     'senha' => Hash::make('password'),
+            //     'email' => Str::random(10),
+            //     'cep' => Str::random(8),
+            //     'endereco' => Str::random(10),
+            //     'cidade' => Str::random(10),
+            //     'estado' => Str::random(10)
+            // ]);
     
     
-            DB::table('profiles')->insert([
-                'nome' => Str::random(10),
-                'usuario' => 1,
-                'produto' => 1,
-                'venda' => 1
-            ]);
-        }
+        DB::table('profiles')->insert([
+            'name' => Str::random(10),
+            'usuario' => 1,
+            'produto' => 1,
+            'venda' => 1
+        ]);
     }
 }

@@ -13,22 +13,22 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 120);
-            $table->string('sobrenome', 200);
-            $table->string('cpf', 11);
-            $table->string('usuario', 50);
-            $table->enum('sexo', ['masculino', 'feminino', 'apache']);
-            $table->unsignedBigInteger('perfil');
-            $table->string('senha', 255);
+            $table->string('name', 120)  -> nullable();
+            $table->string('last_name', 200)  -> nullable();
+            $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
+            $table->unsignedBigInteger('id_profile');
             $table->string('email', 150);
-            $table->string('cep', 8);
-            $table->string('endereco', 150);
-            $table->string('cidade', 80);
-            $table->string('estado', 80);
+            $table->string('password', 255);
+            $table->string('cep', 8) -> nullable();
+            $table->string('endereco', 150)  -> nullable();
+            $table->string('cidade', 80)  -> nullable();
+            $table->string('estado', 80)  -> nullable();
             $table->timestamps();
             
-            $table -> foreign('perfil') -> references('id') -> on('profiles') -> onDelete('cascade');
+            
+            $table -> foreign('id_profile') -> references('id') -> on('profiles') -> onDelete('cascade');
         });
+
     }
 
     /**

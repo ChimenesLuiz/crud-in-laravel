@@ -7,7 +7,6 @@
     <thead>
     <tr>
         <th scope="col">Nome</th>
-        <th scope="col">Nome de Usuario</th>
         <th scope="col">Perfil</th>
         <th scope="col">Email</th>
         <th scope="col">Cidade</th>
@@ -17,9 +16,8 @@
     <tbody>
     @foreach ($data as $row)
         <tr>
-            <td>{{$row -> nome_usuario}}</td>
             <td>{{$row -> username}}</td>
-            <td>{{$row -> nome_perfil}}</td>
+            <td>{{$row -> profile_name}}</td>
             <td>{{$row -> email}}</td>
             <td>{{$row -> cidade}}</td>
             <td>

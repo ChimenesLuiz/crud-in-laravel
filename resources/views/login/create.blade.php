@@ -18,9 +18,9 @@
           <div class="col-lg-6">
             <form action="{{route('login.store')}}" method="POST">
                 @csrf
-              <div class="card2 card border-0 px-4 py-5">
-                  <div class="d-flex mb-4" >
-                      <h6 class="mb-0 mx-2 mt-2">Entrar com: </h6>
+              <div class="card2 card border-0 px-4 py-5 ">
+                  <div class="d-flex mb-4">
+                      <h6 class="mb-0 mx-2 mt-2">Cadastrar com: </h6>
                       <div class="d-flex mx-3 w-25 justify-content-between">
                         <a href=""><i class="bi bi-google" style="font-size: 30px;"></i></a>
                         <a href=""><i class="bi bi-github" style="font-size: 30px;"></i></a>
@@ -33,27 +33,23 @@
                       <div class="line"></div>
                   </div>
                   <div class="row px-3">
-                      <label class="mb-1"><h6 class="mb-0 text-sm">Email</h6></label>
-                      <input class="mb-4" type="text" value="luiz@email.com" name="email" placeholder="Digite seu Email">
+                      <label class="mb-1"><h6 class="mb-0 text-sm">Nome</h6></label>
+                      <input class="mb-4" type="text" value="luiz" name="name" placeholder="Digite seu nome">
                   </div>
+
                   <div class="row px-3">
-                      <label class="mb-1"><h6 class="mb-0 text-sm">Senha</h6></label>
-                      <input type="password" name="password"  value="123" placeholder="Digite sua senha">
+                      <label class="mb-1"><h6 class="mb-0 text-sm">Email</h6></label>
+                      <input class="mb-4" type="text" name="email"  value="luizguichimenes2002@gmail.com" placeholder="Digite seu email">
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex my-3 px-1">
-                        <label for="">Lembrar-se: </label>
-                            <div class="form-check">
-                                <input class="mx-1 my-1 form-check-input" type="checkbox" value="" id="flexCheckDisabled">
-                            </div>
-                    </div>
-                      <a href="" class="ml-auto my-3 px-1 text-primary">Esqueceu a senha?</a>
-                  </div>
-                  <div class="row mb-3 px-3">
-                      <button type="submit" class="btn btn-blue text-center w-100">Login</button>
-                  </div>
-                  <div class="row mb-4 px-1">
-                      <h6 class="font-weight-bold">Nao tem um conta? <a href="{{route('login.create')}}" class="text-primary ">Registre-se</a></h6>
+                
+                <div class="row px-3">
+                    <label class="mb-1"><h6 class="mb-0 text-sm">Senha</h6></label>
+                    <input class="mb-4" type="password" name="password"  value="123" placeholder="Digite sua senha">
+                </div>
+
+                  <div class="d-flex justify-content-between my-5 px-1 ">
+                        <a class="btn btn-danger text-center w-25 rounded-0" href="{{route('login.index')}}">Voltar</a>
+                        <button type="submit" class="btn btn-blue w-25 text-center">Registrar-se</button>
                   </div>
               </div>
             </form>

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Profile extends Model
 {
     protected $fillable = [
-        'nome',
+        'name',
         'usuario',
         'perfil',
         'produto',
@@ -19,6 +19,6 @@ class Profile extends Model
 
     public function users() : HasMany
     {
-        return $this -> hasMany(User::class, 'id_perfil');
+        return $this -> hasMany(User::class, 'id_profile');
     }
 }

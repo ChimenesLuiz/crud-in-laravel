@@ -23,6 +23,7 @@ use App\Http\Controllers\LoginController;
 Route::controller(LoginController::class) -> group(function () {
     Route::get('/login', 'index') -> name('login.index');
     Route::post('/login', 'store') -> name('login.store');
+    Route::get('/login/create', 'create') -> name('login.create');
     Route::get('/login/destroy/{id}', 'destroy') -> name('login.destroy');
 });
 

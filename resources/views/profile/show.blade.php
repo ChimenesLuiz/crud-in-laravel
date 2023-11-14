@@ -17,7 +17,7 @@
     <tbody>
     @foreach ($data as $row)
         <tr>
-            <td>{{$row -> nome}}</td>
+            <td>{{$row -> name}}</td>
             <td>{{($row -> usuario === 1) ? 'ON' : 'OFF'}}</td>
             <td>{{($row -> perfil === 1) ? 'ON' : 'OFF'}}</td>
             <td>{{($row -> produto === 1) ? 'ON' : 'OFF'}}</td>

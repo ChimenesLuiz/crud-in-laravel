@@ -24,8 +24,8 @@ class UserController extends Controller
     public function index()
     {
         $data = DB::table('profiles')
-        -> select('users.id', 'users.nome AS nome_usuario', 'users.usuario AS username', 'profiles.nome AS nome_perfil', 'users.email', 'users.cidade')
-        -> join('users', 'users.perfil', '=', 'profiles.id')
+        -> select('users.id', 'users.name AS username', 'profiles.name AS profile_name', 'users.email', 'users.cidade')
+        -> join('users', 'users.id_profile', '=', 'profiles.id')
         -> get();
 
         return view('user.index') -> with('data', $data);
@@ -45,7 +45,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $request -> senha = Hash::make($request -> senha);
+        $request -> password = Hash::make($request -> password);
 
         $this -> user -> create($request -> except(['_token', 'btn_submit'])); 
 

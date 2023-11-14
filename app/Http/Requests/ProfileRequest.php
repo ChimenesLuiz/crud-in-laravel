@@ -22,7 +22,7 @@ class ProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required',
+            'name' => 'required',
             'usuario' => '',
             'perfil' => '',
             'produto' => '',
@@ -33,7 +33,7 @@ class ProfileRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nome.required' => 'Preencha o campo Nome'
+            'name.required' => 'Preencha o campo Nome'
         ];
     }
 }

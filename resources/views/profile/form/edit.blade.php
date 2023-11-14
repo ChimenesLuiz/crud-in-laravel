@@ -5,7 +5,7 @@
     <div class="row g-3">
       <div class="col-12">
         <label for="firstName" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data -> nome}}" name="nome">
+        <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data -> name}}" name="name">
       </div>
 
       <div class="d-flex justify-content-between">

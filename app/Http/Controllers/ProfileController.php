@@ -45,10 +45,10 @@ class ProfileController extends Controller
     {
         $data = $request -> validated();
         
-        (isset($data['usuario'])) ? ($data['usuario'] = ($data['usuario'] === 'on') ? 1 : 0) : null;
-        (isset($data['perfil'])) ? ($data['perfil'] = ($data['perfil'] === 'on') ? 1 : 0) : null;
-        (isset($data['produto'])) ? ($data['produto'] = ($data['produto'] === 'on') ? 1 : 0) : null;
-        (isset($data['venda'])) ? ($data['venda'] = ($data['venda'] === 'on') ? 1 : 0) : null;
+        (isset($data['usuario'])) ? ($data['usuario'] = ($data['usuario'] === 'on') ? 1 : 0) : 0;
+        (isset($data['perfil'])) ? ($data['perfil'] = ($data['perfil'] === 'on') ? 1 : 0) : 0;
+        (isset($data['produto'])) ? ($data['produto'] = ($data['produto'] === 'on') ? 1 : 0) : 0;
+        (isset($data['venda'])) ? ($data['venda'] = ($data['venda'] === 'on') ? 1 : 0) : 0;
 
         $this -> profile -> create($data); 
 
@@ -80,11 +80,11 @@ class ProfileController extends Controller
         $request -> validated();
         $object = $this -> profile::find($id);
 
-        $object -> nome = $request -> nome;
-        $object -> usuario = $request -> usuario;
-        $object -> perfil = $request -> perfil;
-        $object -> produto = $request -> produto;
-        $object -> venda = $request -> venda;
+        $object -> name = $request -> name;
+        $object -> usuario = ($request -> usuario == null) ? 0 : 1;
+        $object -> perfil = ($request -> perfil == null) ? 0 : 1;
+        $object -> produto = ($request -> produtoo == null) ? 0 : 1;
+        $object -> venda = ($request -> venda == null) ? 0 : 1;
 
         $object -> save();
         return redirect() -> route('profile.index') -> with('message', 'Editado com Sucesso!'); 

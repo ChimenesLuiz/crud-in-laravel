@@ -23,14 +23,12 @@ class UserRequest extends FormRequest
     {
 
         return [
-            'nome' => 'required',
+            'name' => 'required',
             // 'sobrenome' => ['required', new CpfValidationRule],
-            'sobrenome' => 'required',
-            'cpf' => 'required',
-            'usuario' => 'required',
+            'last_name' => 'required',
             'sexo' => 'required',
-            'senha' => 'required',
             'email' => 'required',
+            'password' => 'required',
             'cep' => 'required',
             'endereco' => 'required',
             'cidade' => 'required',
@@ -41,13 +39,11 @@ class UserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nome.required' => 'Preencha o campo Nome',
-            'sobrenome.required' => 'Preencha o campo Sobrenome',
-            'cpf.required' => 'Preencha o campo Cpf',
-            'usuario.required' => 'Preencha o campo Nome de usuario',
+            'name.required' => 'Preencha o campo Nome',
+            'last_name.required' => 'Preencha o campo Sobrenome',
             'sexo.required' => 'Preencha o campo Sexo',
-            'senha.required' => 'Preencha o campo Senha',
             'email.required' => 'Preencha o campo Email',
+            'password.required' => 'Preencha o campo Senha',
             'cep.required' => 'Preencha o campo CEP',
             'endereco.required' => 'Preencha o campo Endereco',
             'cidade.required' => 'Preencha o campo Cidade',
