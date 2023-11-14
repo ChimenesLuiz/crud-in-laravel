@@ -18,15 +18,16 @@ return new class extends Migration
             $table->string('cpf', 11);
             $table->string('usuario', 50);
             $table->enum('sexo', ['masculino', 'feminino', 'apache']);
-            $table->enum('perfil', ['cliente', 'colaborador', 'admin']);
+            $table->unsignedBigInteger('perfil');
             $table->string('senha', 255);
             $table->string('email', 150);
             $table->string('cep', 8);
             $table->string('endereco', 150);
             $table->string('cidade', 80);
             $table->string('estado', 80);
-
             $table->timestamps();
+            
+            $table -> foreign('perfil') -> references('id') -> on('profiles') -> onDelete('cascade');
         });
     }
 

@@ -10,22 +10,22 @@
 
       <div class="d-flex justify-content-between">
         <div class="form-check form-switch" style="font-size: 25px">
-          <input class="form-check-input" name="usuario" type="checkbox" id="flexSwitchCheckChecked" checked>
+          <input class="form-check-input" name="usuario" type="checkbox" id="flexSwitchCheckChecked" >
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Usuarios</label>
         </div>
 
           <div class="form-check form-switch" style="font-size: 25px">
-            <input class="form-check-input" name="perfil" type="checkbox" id="flexSwitchCheckChecked" checked>
+            <input class="form-check-input" name="perfil" type="checkbox" id="flexSwitchCheckChecked" >
             <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Perfis</label>
           </div>
 
         <div class="form-check form-switch" style="font-size: 25px">
-          <input class="form-check-input" name="produto" type="checkbox" id="flexSwitchCheckChecked" checked>
+          <input class="form-check-input" name="produto" type="checkbox" id="flexSwitchCheckChecked" >
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Produtos</label>
         </div>
 
         <div class="form-check form-switch" style="font-size: 25px">
-          <input class="form-check-input" name="venda" type="checkbox" id="flexSwitchCheckChecked" checked>
+          <input class="form-check-input" name="venda" type="checkbox" id="flexSwitchCheckChecked" >
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Vendas</label>
         </div>
       </div>

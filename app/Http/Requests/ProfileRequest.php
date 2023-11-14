@@ -22,7 +22,11 @@ class ProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required'
+            'nome' => 'required',
+            'usuario' => '',
+            'perfil' => '',
+            'produto' => '',
+            'venda' => ''
         ];
     }
 

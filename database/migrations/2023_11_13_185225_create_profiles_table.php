@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
-            $table->enum('usuario', ['ON', 'OFF']) -> default('OFF');
-            $table->enum('perfil', ['ON', 'OFF']) -> default('OFF');
-            $table->enum('produto', ['ON', 'OFF']) -> default('OFF');
-            $table->enum('venda', ['ON', 'OFF']) -> default('OFF');
+            $table->integer('usuario') -> default(0);
+            $table->integer('perfil') -> default(0);
+            $table->integer('produto') -> default(0);
+            $table->integer('venda') -> default(0);
             $table->timestamps();
         });
+
     }
+
 
     /**
      * Reverse the migrations.

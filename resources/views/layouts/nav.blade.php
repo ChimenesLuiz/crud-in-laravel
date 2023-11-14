@@ -1,4 +1,4 @@
-<nav class="col-sm-2  bg-primary p-0">
+<nav class="col-sm-2 bg-primary p-0">
     <div class="w-100 h-100 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
     <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <i class="bi bi-feather" style="font-size: 30px;"></i>

@@ -10,22 +10,22 @@
 
       <div class="d-flex justify-content-between">
         <div class="form-check form-switch" style="font-size: 25px">
-          <input class="form-check-input" name="usuario" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> usuario) === 'ON') ? 'checked' : ''}}>
+          <input class="form-check-input" name="usuario" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> usuario) === 1) ? 'checked' : ''}}>
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Usuarios</label>
         </div>
 
           <div class="form-check form-switch" style="font-size: 25px">
-            <input class="form-check-input" name="perfil" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> perfil) === 'ON') ? 'checked' : ''}}>
+            <input class="form-check-input" name="perfil" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> perfil) === 1) ? 'checked' : ''}}>
             <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Perfis</label>
           </div>
 
         <div class="form-check form-switch" style="font-size: 25px">
-          <input class="form-check-input" name="produto" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> produto) === 'ON') ? 'checked' : ''}}>
+          <input class="form-check-input" name="produto" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> produto) === 1) ? 'checked' : ''}}>
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Produtos</label>
         </div>
 
         <div class="form-check form-switch" style="font-size: 25px">
-          <input class="form-check-input" name="venda" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> venda) === 'ON') ? 'checked' : ''}}>
+          <input class="form-check-input" name="venda" type="checkbox" id="flexSwitchCheckChecked" {{(($data -> venda) === 1) ? 'checked' : ''}}>
           <label class="form-check-label" for="flexSwitchCheckChecked">Gerenciar Vendas</label>
         </div>
       </div>

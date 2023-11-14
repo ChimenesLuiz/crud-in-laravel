@@ -1,4 +1,3 @@
-
 <form action="{{route('user.store')}}" novalidate>
   @csrf
   @include('user.form.validation')
@@ -38,9 +37,10 @@
       <div class="col-12">
         <label for="username" class="form-label">Perfil</label>
         <select class="form-select" name="perfil">
-          <option value="cliente" selected>Cliente</option>
-          <option value="colaborador">Colaborador</option>
-          <option value="admin">Administrador</option>
+          @foreach ($data as $row)
+          <option value="{{$row -> id}}">{{$row -> nome}}</option>  
+          @endforeach
+
         </select>
       </div>
       

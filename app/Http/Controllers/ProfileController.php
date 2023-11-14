@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Http\Requests\ProfileRequest;
-
-
+use LDAP\Result;
 
 class ProfileController extends Controller
 {
@@ -21,9 +20,14 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile = $this -> profile -> all();
+        if (auth() -> check())
+        {
+            return redirect() -> route('home.index');
+        }
+        
+        $data = $this -> profile -> all();
 
-        return view('profile.index') -> with('profile', $profile);
+        return view('profile.index') -> with('data', $data);
     }
 
     /**
@@ -39,8 +43,14 @@ class ProfileController extends Controller
      */
     public function store(ProfileRequest $request)
     {
-        $request -> validated();
-        $this -> profile -> create($request -> except(['_token', 'btn_submit'])); 
+        $data = $request -> validated();
+        
+        (isset($data['usuario'])) ? ($data['usuario'] = ($data['usuario'] === 'on') ? 1 : 0) : null;
+        (isset($data['perfil'])) ? ($data['perfil'] = ($data['perfil'] === 'on') ? 1 : 0) : null;
+        (isset($data['produto'])) ? ($data['produto'] = ($data['produto'] === 'on') ? 1 : 0) : null;
+        (isset($data['venda'])) ? ($data['venda'] = ($data['venda'] === 'on') ? 1 : 0) : null;
+
+        $this -> profile -> create($data); 
 
         return redirect() -> route('profile.index') -> with('message', 'Cadastrado com Sucesso');
     }

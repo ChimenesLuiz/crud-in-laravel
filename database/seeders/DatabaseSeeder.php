@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                 'cpf' => Str::random(11),
                 'usuario' => Str::random(10),
                 'sexo' => 'feminino',
-                'perfil' => 'colaborador',
+                'id_perfil' => 1,
                 'senha' => Hash::make('password'),
                 'email' => Str::random(10),
                 'cep' => Str::random(8),
@@ -35,9 +35,9 @@ class DatabaseSeeder extends Seeder
     
             DB::table('profiles')->insert([
                 'nome' => Str::random(10),
-                'usuario' => 'OFF',
-                'produto' => 'OFF',
-                'venda' => 'OFF'
+                'usuario' => 1,
+                'produto' => 1,
+                'venda' => 1
             ]);
         }
     }

@@ -15,11 +15,11 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($user as $row)
+    @foreach ($data as $row)
         <tr>
-            <td>{{$row -> nome}}</td>
-            <td>{{$row -> usuario}}</td>
-            <td>{{$row -> perfil}}</td>
+            <td>{{$row -> nome_usuario}}</td>
+            <td>{{$row -> username}}</td>
+            <td>{{$row -> nome_perfil}}</td>
             <td>{{$row -> email}}</td>
             <td>{{$row -> cidade}}</td>
             <td>

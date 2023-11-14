@@ -15,13 +15,13 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($profile as $row)
+    @foreach ($data as $row)
         <tr>
             <td>{{$row -> nome}}</td>
-            <td>{{$row -> usuario}}</td>
-            <td>{{$row -> perfil}}</td>
-            <td>{{$row -> produto}}</td>
-            <td>{{$row -> venda}}</td>
+            <td>{{($row -> usuario === 1) ? 'ON' : 'OFF'}}</td>
+            <td>{{($row -> perfil === 1) ? 'ON' : 'OFF'}}</td>
+            <td>{{($row -> produto === 1) ? 'ON' : 'OFF'}}</td>
+            <td>{{($row -> venda === 1) ? 'ON' : 'OFF'}}</td>
             <td>
                 <a href="{{route('profile.edit', ['id' => $row -> id])}}" class="link-dark mx-1">
                     <i class="bi bi-pencil-square" style="font-size: 20px;"></i>

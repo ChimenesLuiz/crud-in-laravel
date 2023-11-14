@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +20,15 @@ use App\Http\Controllers\ProductController;
 
 
 //LOGIN
-Route::get('/', [UserController::class, 'login']) -> name('user.login');
+Route::controller(LoginController::class) -> group(function () {
+    Route::get('/login', 'index') -> name('login.index');
+    Route::post('/login', 'store') -> name('login.store');
+    Route::get('/login/destroy/{id}', 'destroy') -> name('login.destroy');
+});
 
 //HOME
 Route::controller(HomeController::class) -> group(function () {
-    Route::get('/home', 'index') -> name('home.index');
+    Route::get('/', 'index') -> name('home.index');
 });
 
 //USER

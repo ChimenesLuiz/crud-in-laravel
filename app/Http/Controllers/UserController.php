@@ -1,29 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
-
-
+use App\Models\Profile;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public User $user;
+    public Profile $profile;
     
     public function __construct()
     {
         $this -> user = new User();
+        $this -> profile = new Profile();
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = $this -> user -> all();
+        $data = DB::table('profiles')
+        -> select('users.id', 'users.nome AS nome_usuario', 'users.usuario AS username', 'profiles.nome AS nome_perfil', 'users.email', 'users.cidade')
+        -> join('users', 'users.perfil', '=', 'profiles.id')
+        -> get();
 
-        return view('user.index') -> with('user', $user);
+        return view('user.index') -> with('data', $data);
     }
 
     /**
@@ -31,7 +36,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $data = $this -> profile -> all();
+        return view('user.create') -> with('data', $data);
     }
 
     /**
@@ -39,7 +45,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        // $request -> validated();
+        $request -> senha = Hash::make($request -> senha);
+
         $this -> user -> create($request -> except(['_token', 'btn_submit'])); 
 
         return redirect() -> route('user.index') -> with('message', 'Cadastrado com Sucesso');
