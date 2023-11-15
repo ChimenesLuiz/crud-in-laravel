@@ -2,40 +2,35 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 
 
 //LOGIN
 Route::controller(LoginController::class) -> group(function () {
-    Route::get('/', 'index') -> name('login.index');
-    Route::post('/', 'login') -> name('login.login');
+    Route::get('/login', 'index') -> name('login.index');
+    Route::post('/login', 'login') -> name('login.login');
     Route::post('/login/store', 'store') -> name('login.store');
     Route::get('/login/create', 'create') -> name('login.create');
     Route::get('/login/destroy', 'destroy') -> name('login.destroy');
 });
 
-//HOME
-Route::middleware(['auth', 'auth.session'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index']) -> name('home.index');
-});
 
-
-//USER
+//MUST BE LOGGED 
 Route::middleware(['auth', 'auth.session'])->group(function () {
+    //HOME
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index') -> name('dash.index');
+        // Route::get('/user/create', 'create') -> name('user.create');
+        // Route::post('/user', 'store') -> name('user.store');
+        // Route::get('/user/{id}/edit', 'edit') -> name('user.edit');
+        // Route::put('/user/{id}', 'update') -> name('user.update');
+        // Route::get('/user/{id}', 'destroy') -> name('user.destroy');
+
+    });
+
     //USER
     Route::controller(UserController::class)->group(function () {
         Route::get('/user', 'index') -> name('user.index');
@@ -56,14 +51,14 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/profile/{id}', 'destroy') -> name('profile.destroy');
 
     });
-});
+    //PRODUCT
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/product', 'index') -> name('product.index');
+        Route::get('/product/create', 'create') -> name('product.create');
+        Route::post('/product', 'store') -> name('product.store');
+        Route::get('/product/{id}/edit', 'edit') -> name('product.edit');
+        Route::put('/product/{id}', 'update') -> name('product.update');
+        Route::get('/product/{id}', 'destroy') -> name('product.destroy');
 
-//PRODUCT
-Route::controller(ProductController::class) -> group(function () {
-    Route::get('/product', 'index') -> name('product.index');
-    Route::get('/product/create', 'create') -> name('product.create');
-    Route::get('/product/create/store', 'store') -> name('product.store');
-    Route::get('/product/edit/{id}', 'edit') -> name('product.edit');
-    Route::get('/product/update/{id}', 'update') -> name('product.update');
-    Route::get('/product/destroy/{id}', 'destroy') -> name('product.destroy');
+    });
 });

@@ -1,16 +1,20 @@
 <nav class="col-sm-2 bg-primary p-0">
     <div class="w-100 h-100 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
-    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <i class="bi bi-feather" style="font-size: 30px;"></i>
-       <h3 class="mx-3">CRM LUIZ</h3>
-    </a>
+        <div class="d-flex justify-content-center">
+
+            <img src="https://cdn.freelogodesign.org/files/0745f4cddafe40fcb170003a197e76e7/thumb/logo_200x200.png?v=0" class="img-fluid" style="max-width: 30%; height: auto;" alt="">
+            {{-- <i class="bi bi-feather" style="font-size: 30px;"></i> --}}
+           {{-- <h3 class="mx-3">CRM LUIZ</h3> --}}
+        </div>
+
+   
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="container w-100">
             <button type="button" class="btn btn-light w-100 mb-3">  
-                <a href="{{route('home.index')}}" class="text-dark text-decoration-none">
-                    <i class="bi bi-house"></i>
-                    HOME
+                <a href="{{route('dash.index')}}" class="text-dark text-decoration-none">
+                    <i class="bi bi-speedometer2"></i>
+                    DASHBOARD
                 </a>
             </button>
         </li>

@@ -47,7 +47,7 @@ class LoginController extends Controller
                                 'email' => $validated['email'],
                                 'password' => $validated['password']]); 
 
-        return redirect()-> route('home.index');
+        return redirect()-> route('dash.index');
     }
 
 
@@ -67,7 +67,7 @@ class LoginController extends Controller
     
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()-> route('home.index');
+            return redirect()-> route('dash.index');
         }
     
         return back()->withErrors(['error' => 'Credenciais inválidas']);

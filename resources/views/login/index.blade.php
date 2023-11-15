@@ -12,7 +12,7 @@
                       <img src="https://i.imgur.com/CXQmsmF.png" class="logo">
                   </div>
                   <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                      <img src="https://i.imgur.com/uNGdWHi.png" class="image">
+                      <img src="https://i.imgur.com/uNGdWHi.png" class="w-100 h-100">
                   </div>
               </div>
           </div>
