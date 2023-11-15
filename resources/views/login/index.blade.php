@@ -1,8 +1,8 @@
+@include('login.authcheck')
 @extends('login.header')
 @section('login.index')
 
 <div class="container-fluid p-5 h-100 w-100">
-    @include('login.authcheck')
     @include('login.validation')
   <div class="card card0 border-0 h-100">
       <div class="row d-flex h-100 align-items-center">

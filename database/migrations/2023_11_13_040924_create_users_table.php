@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 120)  -> nullable();
+            $table->string('name', 120);
             $table->string('last_name', 200)  -> nullable();
             $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
             $table->unsignedBigInteger('id_profile') -> default(1);

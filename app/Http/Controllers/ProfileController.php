@@ -20,10 +20,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        if (auth() -> check())
-        {
-            return redirect() -> route('home.index');
-        }
         
         $data = $this -> profile -> all();
 

@@ -21,39 +21,44 @@ use App\Http\Controllers\LoginController;
 
 //LOGIN
 Route::controller(LoginController::class) -> group(function () {
-    Route::get('/login', 'index') -> name('login.index');
-    Route::post('/login', 'store') -> name('login.store');
-    Route::post('/login', 'login') -> name('login.login');
+    Route::get('/', 'index') -> name('login.index');
+    Route::post('/', 'login') -> name('login.login');
+    Route::post('/login/store', 'store') -> name('login.store');
     Route::get('/login/create', 'create') -> name('login.create');
-    Route::get('/login/destroy/{id}', 'destroy') -> name('login.destroy');
+    Route::get('/login/destroy', 'destroy') -> name('login.destroy');
 });
 
 //HOME
-Route::controller(HomeController::class) -> group(function () {
-    Route::get('/', 'index') -> name('home.index');
+Route::middleware(['auth', 'auth.session'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index']) -> name('home.index');
 });
 
-//USER
-Route::controller(UserController::class) -> group(function () {
-    Route::get('/user', 'index') -> name('user.index');
-    Route::get('/user/create', 'create') -> name('user.create');
-    Route::get('/user/create/store', 'store') -> name('user.store');
-    Route::get('/user/edit/{id}', 'edit') -> name('user.edit');
-    Route::get('/user/update/{id}', 'update') -> name('user.update');
-    Route::get('/user/destroy/{id}', 'destroy') -> name('user.destroy');
-});
 
 //USER
-Route::controller(ProfileController::class) -> group(function () {
-    Route::get('/profile', 'index') -> name('profile.index');
-    Route::get('/profile/create', 'create') -> name('profile.create');
-    Route::get('/profile/create/store', 'store') -> name('profile.store');
-    Route::get('/profile/edit/{id}', 'edit') -> name('profile.edit');
-    Route::get('/profile/update/{id}', 'update') -> name('profile.update');
-    Route::get('/profile/destroy/{id}', 'destroy') -> name('profile.destroy');
+Route::middleware(['auth', 'auth.session'])->group(function () {
+    //USER
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/user', 'index') -> name('user.index');
+        Route::get('/user/create', 'create') -> name('user.create');
+        Route::post('/user', 'store') -> name('user.store');
+        Route::get('/user/{id}/edit', 'edit') -> name('user.edit');
+        Route::put('/user/{id}', 'update') -> name('user.update');
+        Route::get('/user/{id}', 'destroy') -> name('user.destroy');
+
+    });
+    //PROFILE
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'index') -> name('profile.index');
+        Route::get('/profile/create', 'create') -> name('profile.create');
+        Route::post('/profile', 'store') -> name('profile.store');
+        Route::get('/profile/{id}/edit', 'edit') -> name('profile.edit');
+        Route::put('/profile/{id}', 'update') -> name('profile.update');
+        Route::get('/profile/{id}', 'destroy') -> name('profile.destroy');
+
+    });
 });
 
-//USER
+//PRODUCT
 Route::controller(ProductController::class) -> group(function () {
     Route::get('/product', 'index') -> name('product.index');
     Route::get('/product/create', 'create') -> name('product.create');

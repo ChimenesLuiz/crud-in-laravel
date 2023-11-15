@@ -1,5 +1,5 @@
 
-<form action="{{route('profile.store')}}" novalidate>
+<form action="{{route('profile.store')}}" method="POST" novalidate>
   @csrf
   @include('profile.form.validation')
     <div class="row g-3">

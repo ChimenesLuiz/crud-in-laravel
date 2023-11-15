@@ -25,13 +25,13 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             // 'sobrenome' => ['required', new CpfValidationRule],
-            'last_name' => 'required',
-            'sexo' => 'required',
-            'email' => 'required',
-            'cep' => 'required',
-            'endereco' => 'required',
-            'cidade' => 'required',
-            'estado' => 'required'
+
+            'email' => 'required'
+            // 'sexo' => 'required',
+            // 'cep' => 'required',
+            // 'endereco' => 'required',
+            // 'cidade' => 'required',
+            // 'estado' => 'required'
         ];
     }
 
@@ -39,13 +39,13 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => 'Preencha o campo Nome',
-            'last_name.required' => 'Preencha o campo Sobrenome',
-            'sexo.required' => 'Preencha o campo Sexo',
             'email.required' => 'Preencha o campo Email',
-            'cep.required' => 'Preencha o campo CEP',
-            'endereco.required' => 'Preencha o campo Endereco',
-            'cidade.required' => 'Preencha o campo Cidade',
-            'estado.required' => 'Preencha o campo Estado'
+            // 'last_name.required' => 'Preencha o campo Sobrenome',
+            // 'sexo.required' => 'Preencha o campo Sexo',
+            // 'cep.required' => 'Preencha o campo CEP',
+            // 'endereco.required' => 'Preencha o campo Endereco',
+            // 'cidade.required' => 'Preencha o campo Cidade',
+            // 'estado.required' => 'Preencha o campo Estado'
         ];
     }
 }

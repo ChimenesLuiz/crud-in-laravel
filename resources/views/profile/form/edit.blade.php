@@ -1,5 +1,6 @@
 
-<form action="{{route('profile.update', ['id' => $data -> id])}}" novalidate>
+<form action="{{route('profile.update', ['id' => $data -> id])}}" method="POST" novalidate>
+  @method('PUT')
   @csrf
   @include('profile.form.validation')
     <div class="row g-3">

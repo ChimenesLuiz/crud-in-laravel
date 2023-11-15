@@ -1,4 +1,4 @@
-<form action="{{route('user.store')}}" novalidate>
+<form action="{{route('user.store')}}" method="post" novalidate>
   @csrf
   @include('user.form.validation')
     <div class="row g-3">
