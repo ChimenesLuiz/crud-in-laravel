@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('user.create')
-  <h1 class="text-center p-3">Cadastro de Usuario</h1>
-  @include('user.form.create')
+@section('product.create')
+  <h1 class="text-center p-3">Cadastro de Produto</h1>
+  @include('product.form.create')
 @endsection

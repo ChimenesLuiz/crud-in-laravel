@@ -1,86 +1,43 @@
-
-<form action="{{route('user.store')}}" novalidate>
+@include('product.form.modal_supplier.create')
+<form action="{{route('product.store')}}" method="POST" novalidate>
   @csrf
   @include('user.form.validation')
     <div class="row g-3">
       <div class="col-sm-6">
         <label for="firstName" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="firstName" placeholder="" value="" name="nome">
-
+        <input type="text" class="form-control" id="firstName" placeholder="" value="" name="name">
       </div>
 
-      <div class="col-sm-6">
-        <label for="lastName" class="form-label">Sobrenome</label>
-        <input type="text" class="form-control" id="lastName" placeholder="" value="" name="sobrenome">
-      </div>
-
-      <div class="col-12">
-        <label for="lastName" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="lastName" placeholder="" value="" name="cpf">
-      </div>
-
-      
       <div class="col-6">
-        <label for="username" class="form-label">Nome de usuario</label>
+        <label for="username" class="form-label">Valor</label>
         <div class="input-group has-validation">
-          <span class="input-group-text">@</span>
-          <input type="text" class="form-control" id="username"  name="usuario">
+          <span class="input-group-text">R$</span>
+          <input type="text" class="form-control" id="username"  name="value">
         </div>
       </div>
-      <div class="col-6">
-        <label for="username" class="form-label">Sexo</label>
-        <select class="form-select" name="sexo">
-          <option value="feminino" selected>Feminino</option>
-          <option value="masculino">Masculino</option>
-          <option value="apache">Optimus Prime</option>
+
+
+      <div class="col-12">
+        <label for="lastName" class="form-label">Quantidade</label>
+        <input type="text" class="form-control" id="lastName" placeholder="" value="" name="amount">
+      </div>
+
+      <div class="col-12">
+        <label for="username" class="form-label">Fornecedor</label>
+        <select class="form-select" name="supplier" onchange="mostrarModal(this.value);">
+          <option style="color: blue;" value="mostrarModal">Adicionar Novo Fornecedor</option>
+          <option selected>Nenhum</option>
         </select>
       </div>
-      <div class="col-12">
-        <label for="username" class="form-label">Perfil</label>
-        <select class="form-select" name="perfil">
-          <option value="cliente" selected>Cliente</option>
-          <option value="colaborador">Colaborador</option>
-          <option value="admin">Administrador</option>
-        </select>
-      </div>
+
       
-      <div class="col-12">
-        <label for="lastName" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="lastName" placeholder="" value="" name="senha">
-      </div>
-
-      <div class="col-12">
-        {{-- <span class="text-muted">(Opcional)</span> --}}
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email">
-      </div>
-
-      <div class="col-10">
-        <label for="address" class="form-label">CEP</label>
-        <input type="text" class="form-control" id="address" name="cep">
-      </div>
-
-      <a class="d-flex col-2 justify-content-center mt-5 btn btn-success text-decoration-none text-white" href="{{route('user.index')}}">Buscar</a>
-
-      <div class="col-12">
-        <label for="address" class="form-label">Endereco</label>
-        <input type="text" class="form-control" id="address" name="endereco">
-      </div>
-
-      <div class="col-6">
-        <label for="address" class="form-label">Cidade</label>
-        <input type="text" class="form-control" id="address" name="cidade">
-      </div>
       
-      <div class="col-6">
-        <label for="address" class="form-label">Estado</label>
-        <input type="text" class="form-control" id="address" name="estado">
+      
+      <hr class="my-4">
+      <div class="d-flex justify-content-between">
+        <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('product.index')}}">Cancelar</a>
+        <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
       </div>
-    </div>
-    <hr class="my-4">
-    <div class="d-flex justify-content-between">
+</form>
+<script src="{{asset('js/showmodal.js')}}"></script>
 
-      <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('user.index')}}">Cancelar</a>
-      <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
-    </div>
-  </form>

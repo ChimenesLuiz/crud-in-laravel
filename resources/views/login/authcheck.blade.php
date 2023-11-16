@@ -1,3 +1,3 @@
 @if (auth() -> check())
-    <h1>JA ESTA LOGADO</h1>
+    <script>window.location = "/dashboard";</script>
 @endif

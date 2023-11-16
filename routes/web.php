@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SupplierController;
 
 
 //LOGIN
@@ -22,6 +23,7 @@ Route::controller(LoginController::class) -> group(function () {
 Route::middleware(['auth', 'auth.session'])->group(function () {
     //HOME
     Route::controller(DashboardController::class)->group(function () {
+        Route::get('/', 'index') -> name('dash.index');
         Route::get('/dashboard', 'index') -> name('dash.index');
         // Route::get('/user/create', 'create') -> name('user.create');
         // Route::post('/user', 'store') -> name('user.store');
@@ -56,9 +58,11 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/product', 'index') -> name('product.index');
         Route::get('/product/create', 'create') -> name('product.create');
         Route::post('/product', 'store') -> name('product.store');
+        Route::post('/product/create/saveModal', 'storeModal') -> name('product.storeModal');
         Route::get('/product/{id}/edit', 'edit') -> name('product.edit');
         Route::put('/product/{id}', 'update') -> name('product.update');
         Route::get('/product/{id}', 'destroy') -> name('product.destroy');
 
     });
+
 });

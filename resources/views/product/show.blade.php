@@ -1,3 +1,4 @@
+
 <button class="btn btn-dark mb-3">
     <i class="bi bi-plus-circle"></i>
     <a class="text-decoration-none text-white" href="{{route('product.create')}}">CRIAR PRODUTO</a>
@@ -5,27 +6,27 @@
 <table class="table table-hover text-left">
     <thead>
     <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">Nome de Usuario</th>
-        <th scope="col">Perfil</th>
-        <th scope="col">Email</th>
-        <th scope="col">Cidade</th>
+        <th scope="col">Produto</th>
+        {{-- <th scope="col">Categoria</th> --}}
+        <th scope="col">Valor</th>
+        <th scope="col">Estoque</th>
+        <th scope="col">Fornecedor</th>
         <th scope="col">Acoes</th>
     </tr>
     </thead>
     <tbody>
-    @foreach ($user as $row)
+    @foreach ($product as $row)
         <tr>
-            <td>{{$row -> nome}}</td>
-            <td>{{$row -> usuario}}</td>
-            <td>{{$row -> perfil}}</td>
-            <td>{{$row -> email}}</td>
-            <td>{{$row -> cidade}}</td>
+            <td>{{$row -> name}}</td>
+            <td>{{$row -> value}}</td>
+            <td>{{$row -> amount}}</td>
+            <td>{{$row -> supplier}}</td>
+            {{-- <td>Categoria do Produto</td> --}}
             <td>
-                <a href="{{route('user.edit', ['id' => $row -> id])}}" class="link-dark mx-1">
+                <a href="{{route('product.edit', ['id' => $row -> id])}}" class="link-dark mx-1">
                     <i class="bi bi-pencil-square" style="font-size: 20px;"></i>
                 </a>
-                <a href="{{route('user.destroy', ['id' => $row -> id])}}" class="link-dark mx-1">
+                <a href="{{route('product.destroy', ['id' => $row -> id])}}" class="link-dark mx-1">
                     <i class="bi bi-trash" style="font-size: 20px; color:red;"></i>
                 </a>
             </td> 

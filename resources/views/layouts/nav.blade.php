@@ -23,7 +23,7 @@
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('user.index')}} "class="text-dark text-decoration-none">
                     <i class="bi bi-people"></i>
-                    USER
+                    USUARIOS
                 </a>
             </button>
         </li>
@@ -32,7 +32,7 @@
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('profile.index')}} "class="text-dark text-decoration-none">
                     <i class="bi bi-people"></i>
-                    PROFILE
+                    PERFIS
                 </a>
             </button>
         </li>
@@ -41,7 +41,7 @@
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('product.index')}} "class="text-dark text-decoration-none">
                     <i class="bi bi-box"></i>
-                    PRODUCT
+                    PRODUTOS
                 </a>
             </button>
         </li>

@@ -39,7 +39,7 @@
 
                   <div class="row px-3">
                       <label class="mb-1"><h6 class="mb-0 text-sm">Email</h6></label>
-                      <input class="mb-4" type="text" name="email"  value="luizguichimenes2002@gmail.com" placeholder="Digite seu email">
+                      <input class="mb-4" type="text" name="email"  value="luiz@email.com" placeholder="Digite seu email">
                   </div>
                 
                 <div class="row px-3">

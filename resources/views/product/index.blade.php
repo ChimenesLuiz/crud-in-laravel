@@ -1,4 +1,4 @@
 @extends('layouts.master')
-@section('user.index')
-    @include('user.show')
+@section('product.index')
+    @include('product.show')
 @endsection
