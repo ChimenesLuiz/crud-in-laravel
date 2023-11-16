@@ -47,7 +47,7 @@ class LoginController extends Controller
                                 'email' => $validated['email'],
                                 'password' => $validated['password']]); 
 
-        return redirect()-> route('login.index');
+        return redirect()-> route('dash.index');
     }
 
 

@@ -2,9 +2,24 @@
 <form action="{{route('product.store')}}" method="POST" novalidate>
   @csrf
   @include('user.form.validation')
+  <div class="col-12 d-flex justify-content-between mb-3">
+    <div class="" style="width: 90%">
+      <label for="username" class="form-label">Fornecedor</label>
+      <select class="form-select" name="id_supplier" onchange="mostrarModal(this.value);">
+        <option style="color: blue;" value="mostrarModal">Adicionar Novo Fornecedor</option>
+        <option value="void" selected>Nenhum</option>
+        @foreach ($supplier as $row)
+          <option value="{{$row -> id}}">{{$row -> name}}</option>  
+        @endforeach
+      </select>
+    </div>
+
+  </div>
+
+
     <div class="row g-3">
       <div class="col-sm-6">
-        <label for="firstName" class="form-label">Nome</label>
+        <label for="firstName" class="form-label">Produto nome</label>
         <input type="text" class="form-control" id="firstName" placeholder="" value="" name="name">
       </div>
 
@@ -22,15 +37,6 @@
         <input type="text" class="form-control" id="lastName" placeholder="" value="" name="amount">
       </div>
 
-      <div class="col-12">
-        <label for="username" class="form-label">Fornecedor</label>
-        <select class="form-select" name="supplier" onchange="mostrarModal(this.value);">
-          <option style="color: blue;" value="mostrarModal">Adicionar Novo Fornecedor</option>
-          <option selected>Nenhum</option>
-        </select>
-      </div>
-
-      
       
       
       <hr class="my-4">

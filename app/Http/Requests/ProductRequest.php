@@ -20,7 +20,7 @@ class ProductRequest extends FormRequest
             'name' => 'required',
             'value' => 'required|numeric',
             'amount' => 'required',
-            'supplier' => ''
+            'id_supplier' => ['required', 'not_in:void']
         ];
     }
 
@@ -30,6 +30,7 @@ class ProductRequest extends FormRequest
             'name.required' => 'Preencha o campo nome',
             'value.required' => 'Preencha o campo valor',
             'amount.required' => 'Preencha o campo quantidade',
+            'id_supplier.not_in' => 'Preencha o campo Fornecedor',
             'value.numeric' => 'O campo valor suporta apenas numeros'
         ];
     }

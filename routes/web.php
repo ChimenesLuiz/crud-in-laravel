@@ -58,7 +58,7 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/product', 'index') -> name('product.index');
         Route::get('/product/create', 'create') -> name('product.create');
         Route::post('/product', 'store') -> name('product.store');
-        Route::post('/product/create/saveModal', 'storeModal') -> name('product.storeModal');
+        Route::post('/product/create/', 'storeModal') -> name('product.storeModal');
         Route::get('/product/{id}/edit', 'edit') -> name('product.edit');
         Route::put('/product/{id}', 'update') -> name('product.update');
         Route::get('/product/{id}', 'destroy') -> name('product.destroy');

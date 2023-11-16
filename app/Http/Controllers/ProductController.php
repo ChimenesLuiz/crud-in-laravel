@@ -5,32 +5,38 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Supplier;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     // public User $user;
     // public Profile $profile;
     public Product $product;
+    public Supplier $supplier;
     
     public function __construct()
     {
         // $this -> user = new User();
         // $this -> profile = new Profile();
         $this -> product = new Product();
+        $this -> supplier = new Supplier();
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $data = DB::table('profiles')
-        // -> select('users.id', 'users.name AS username', 'profiles.name AS profile_name', 'users.email', 'users.cidade')
-        // -> join('users', 'users.id_profile', '=', 'profiles.id')
-        // -> get();
-
-        $product = $this -> product -> all();
-
-        return view('product.index') -> with('product', $product);
+        $data = DB::table('suppliers')
+        -> select('products.id AS product_id',
+                'products.name AS product_name',
+                'products.value',
+                'products.amount',
+                'suppliers.name AS supplier_name')
+        -> join('products', 'products.id_supplier', '=', 'suppliers.id')
+        -> get();
+        
+        return view('product.index') -> with('data', $data);
     }
 
     /**
@@ -38,8 +44,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product = $this -> product -> all();
-        return view('product.create') -> with('product', $product);
+        $supplier = $this -> supplier -> all();
+
+        return view('product.create') -> with('supplier', $supplier);
     }
 
     /**
@@ -47,6 +54,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        // dd($request);
         $this -> product -> create($request -> except(['_token', 'btn_submit'])); 
 
         return redirect() -> route('product.index') -> with('message', 'Cadastrado com Sucesso');
@@ -100,13 +108,9 @@ class ProductController extends Controller
 
     public function storeModal(Request $request)
 {
-    dd($request);
-    // Validação dos dados (substitua pelos campos reais do seu formulário)
 
-    // Lógica para salvar os dados no banco de dados
-    // Substitua isso com a lógica real do seu aplicativo
-    // Exemplo: Modelo::create($request->all());
+    $this -> supplier -> create($request -> except(['_token', 'btn_submit'])); 
 
-    return response()->json(['mensagem' => 'Dados salvos com sucesso!']);
+    return redirect() -> route('product.create') -> with('message', 'Fornecedor criado com sucesso');
 }
 }

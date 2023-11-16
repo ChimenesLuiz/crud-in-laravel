@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="supplierForm" method="POST" enctype="multipart/form-data">
+        <form id="supplierForm" action="{{route('product.storeModal')}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label for="" class="col-form-label">Nome:</label>
@@ -27,29 +27,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).on('submit','#supplierForm',function(e){
-      e.preventDefault();
-      /**
-       * USE THE ROUTE NAME 
-       */
-      const AJAX_API = "{{route('product.storeModal')}}"
-      $.ajax({
-          type:"POST",
-          url:AJAX_API,
-          data:$("#supplierForm").serialize(),
-          success:function(response){
-              console.log(response)
-              $('#exampleModal').modal("hide")
-              alert("foi");
-          },
-          error: function(error){
-              console.log(error)
-             alert("nao foi");
-          }
-  });
-});
-</script>
-
-

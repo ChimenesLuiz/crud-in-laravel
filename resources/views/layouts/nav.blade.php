@@ -48,7 +48,16 @@
     </ul>
     <hr>
     <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        {{-- <!-- Default dropup button -->
+        <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropup
+            </button>
+            <div class="dropdown-menu">
+            <!-- Dropdown menu links -->
+            </div>
+        </div> --}}
+        <a href="" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/122306667?s=400&u=fe9a98d87cda3a0159fcf0d9f6460a12ca26b28e&v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>{{(auth() -> user() -> name ?? 'User')}} </strong>
            
