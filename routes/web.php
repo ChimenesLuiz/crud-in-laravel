@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\AccountController;
 
 
 //LOGIN
@@ -62,6 +63,16 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/product/{id}/edit', 'edit') -> name('product.edit');
         Route::put('/product/{id}', 'update') -> name('product.update');
         Route::get('/product/{id}', 'destroy') -> name('product.destroy');
+
+    });
+    //ACCOUNT
+    Route::controller(AccountController::class)->group(function () {
+        Route::get('/account', 'index') -> name('account.index');
+        Route::get('/account/create', 'create') -> name('account.create');
+        Route::post('/account', 'store') -> name('account.store');
+        Route::get('/account/{id}/edit', 'edit') -> name('account.edit');
+        Route::put('/account/{id}', 'update') -> name('account.update');
+        Route::get('/account/{id}', 'destroy') -> name('account.destroy');
 
     });
 
