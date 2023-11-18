@@ -3,17 +3,16 @@
   @csrf
   @include('user.form.validation')
   <div class="col-12 d-flex justify-content-between mb-3">
-    <div class="" style="width: 90%">
+    <div class="" style="width: 85%">
       <label for="username" class="form-label">Fornecedor</label>
-      <select class="form-select" name="id_supplier" onchange="mostrarModal(this.value);">
-        <option style="color: blue;" value="mostrarModal">Adicionar Novo Fornecedor</option>
+      <select class="form-select" name="id_supplier">
         <option value="void" selected>Nenhum</option>
         @foreach ($supplier as $row)
           <option value="{{$row -> id}}">{{$row -> name}}</option>  
         @endforeach
       </select>
     </div>
-
+    <button type="button" class="btn btn-success mt-3" data-toggle="modal" style="width: 10%;" data-target="#exampleModal">Adicionar</button>
   </div>
 
 
@@ -45,5 +44,7 @@
         <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
       </div>
 </form>
-<script src="{{asset('js/showmodal.js')}}"></script>
+
+
+{{-- <script src="{{asset('js/showmodal.js')}}"></script> --}}
 

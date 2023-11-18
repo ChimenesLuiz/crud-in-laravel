@@ -41,6 +41,10 @@
                     @yield('user.create')
                     @yield('user.edit')
 
+                    @yield('client.index')
+                    @yield('client.create')
+                    @yield('client.edit')
+
                     @yield('profile.index')
                     @yield('profile.create')
                     @yield('profile.edit')
@@ -48,6 +52,10 @@
                     @yield('product.index')
                     @yield('product.create')
                     @yield('product.edit')
+
+                    @yield('supplier.index')
+                    @yield('supplier.create')
+                    @yield('supplier.edit')
                 </div>
             </section>
         </main>

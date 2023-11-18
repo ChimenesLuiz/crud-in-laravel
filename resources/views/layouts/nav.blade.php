@@ -25,6 +25,14 @@
                 </a>
             </button>
         </li>
+        <li class="container w-100">
+            <button class="btn btn-light w-100 mb-3">  
+                <a href="{{route('client.index')}} "class="text-dark text-decoration-none">
+                    <i class="bi bi-people"></i>
+                    CLIENTES
+                </a>
+            </button>
+        </li>
 
         <li class="container w-100">
             <button class="btn btn-light w-100 mb-3">  
@@ -51,8 +59,6 @@
         <strong>{{(auth() -> user() -> name ?? 'User')}}</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="{{route('account.edit', ['id' => Auth::id()])}}">Minha conta</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="{{route('login.destroy')}}">Sair</a></li>

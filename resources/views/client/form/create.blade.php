@@ -1,6 +1,6 @@
-<form action="{{route('user.store')}}" method="post" novalidate>
+<form action="{{route('client.store')}}" method="post" novalidate>
   @csrf
-  @include('user.form.validation')
+  @include('client.form.validation')
     <div class="row g-3">
       <div class="col-sm-6">
         <label for="firstName" class="form-label">Nome</label>
@@ -13,37 +13,40 @@
         <input type="text" class="form-control" id="lastName" placeholder="" value="" name="last_name">
       </div>
 
+      <div class="col-12">
+        {{-- <span class="text-muted">(Opcional)</span> --}}
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email">
+      </div>
 
-      {{-- <div class="col-6">
+      <div class="col-sm-6">
+        {{-- <span class="text-muted">(Opcional)</span> --}}
+        <label for="email" class="form-label">Telefone 1</label>
+        <input type="email" class="form-control" id="email" name="phone">
+      </div>
+
+      <div class="col-sm-6">
+        {{-- <span class="text-muted">(Opcional)</span> --}}
+        <label for="email" class="form-label">Telefone 2</label>
+        <input type="email" class="form-control" id="email" name="phone2">
+      </div>
+
+      <div class="col-12">
+        {{-- <span class="text-muted">(Opcional)</span> --}}
+        <label for="email" class="form-label">CPF</label>
+        <input type="email" class="form-control" id="email" name="cpf">
+      </div>
+
+      <div class="col-12">
         <label for="username" class="form-label">Sexo</label>
         <select class="form-select" name="sexo">
           <option value="feminino" selected>Feminino</option>
           <option value="masculino">Masculino</option>
           <option value="apache">Optimus Prime</option>
         </select>
-      </div> --}}
-      <div class="col-12">
-        <label for="username" class="form-label">Perfil</label>
-        <select class="form-select" name="id_profile">
-          @foreach ($data as $row)
-          <option value="{{$row -> id}}">{{$row -> name}}</option>  
-          @endforeach
+      </div>
 
-        </select>
-      </div>
       
-      
-      <div class="col-12">
-        {{-- <span class="text-muted">(Opcional)</span> --}}
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email">
-      </div>
-      
-      <div class="col-12">
-        <label for="lastName" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="lastName" placeholder="" value="" name="password">
-      </div>
-{{--       
       <div class="col-10">
         <label for="address" class="form-label">CEP</label>
         <input type="text" class="form-control" id="address" name="cep">
@@ -65,11 +68,11 @@
         <label for="address" class="form-label">Estado</label>
         <input type="text" class="form-control" id="address" name="estado">
       </div>
-    </div> --}}
+    </div>
     <hr class="my-4">
     <div class="d-flex justify-content-between">
 
-      <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('user.index')}}">Cancelar</a>
+      <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('client.index')}}">Cancelar</a>
       <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
     </div>
   </form>

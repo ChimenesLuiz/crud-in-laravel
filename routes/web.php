@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
@@ -44,6 +45,16 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/user/{id}', 'destroy') -> name('user.destroy');
 
     });
+    //CLIENT
+    Route::controller(ClientController::class)->group(function () {
+        Route::get('/client', 'index') -> name('client.index');
+        Route::get('/client/create', 'create') -> name('client.create');
+        Route::post('/client', 'store') -> name('client.store');
+        Route::get('/client/{id}/edit', 'edit') -> name('client.edit');
+        Route::put('/client/{id}', 'update') -> name('client.update');
+        Route::get('/client/{id}', 'destroy') -> name('client.destroy');
+
+    });
     //PROFILE
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'index') -> name('profile.index');
@@ -60,9 +71,21 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/product/create', 'create') -> name('product.create');
         Route::post('/product', 'store') -> name('product.store');
         Route::post('/product/create/', 'storeModal') -> name('product.storeModal');
-        Route::get('/product/{id}/edit', 'edit') -> name('product.edit');
+        Route::get('/product/{id?}/edit', 'edit') -> name('product.edit');
         Route::put('/product/{id}', 'update') -> name('product.update');
-        Route::get('/product/{id}', 'destroy') -> name('product.destroy');
+        Route::get('/product/{id?}', 'destroy') -> name('product.destroy');
+
+    });
+    //SUPPLIER
+    Route::controller(SupplierController::class)->group(function () {
+        Route::get('/supplier', 'index') -> name('supplier.index');
+        Route::get('/supplier/create', 'create') -> name('supplier.create');
+        Route::post('/supplier', 'store') -> name('supplier.store');
+        Route::post('/supplier/store', 'storeModal') -> name('supplier.storeModal');
+        Route::post('/supplier/create/', 'storeModal') -> name('supplier.storeModal');
+        Route::get('/supplier/{id?}/edit', 'edit') -> name('supplier.edit');
+        Route::put('/supplier/{id}', 'update') -> name('supplier.update');
+        Route::get('/supplier/{id?}', 'destroy') -> name('supplier.destroy');
 
     });
     //ACCOUNT

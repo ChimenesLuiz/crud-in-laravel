@@ -27,14 +27,30 @@ class ProductController extends Controller
      */
     public function index()
     {
+        // $data = DB::table('suppliers')
+        // -> select('products.id AS product_id',
+        //         'products.name AS product_name',
+        //         'products.value',
+        //         'products.amount',
+        //         'suppliers.id AS supplier_id',
+        //         'suppliers.name AS supplier_name',
+        //         'suppliers.cnpj AS supplier_cnpj',)
+        // -> join('products', 'products.id_supplier', '=', 'suppliers.id')
+        // -> get();
         $data = DB::table('suppliers')
-        -> select('products.id AS product_id',
-                'products.name AS product_name',
-                'products.value',
-                'products.amount',
-                'suppliers.name AS supplier_name')
-        -> join('products', 'products.id_supplier', '=', 'suppliers.id')
-        -> get();
+        ->select(
+            'products.id AS product_id',
+            'products.name AS product_name',
+            'products.value',
+            'products.amount',
+            'suppliers.id AS supplier_id',
+            'suppliers.name AS supplier_name',
+            'suppliers.cnpj AS supplier_cnpj'
+        )
+        ->leftJoin('products', 'products.id_supplier', '=', 'suppliers.id')
+        ->get();
+        // dd($data);
+
         
         return view('product.index') -> with('data', $data);
     }

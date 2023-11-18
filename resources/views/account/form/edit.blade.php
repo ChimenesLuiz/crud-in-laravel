@@ -2,7 +2,7 @@
 <div class="">
   <!-- Account page navigation-->
   <nav class="nav nav-borders">
-      <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Conta</a>
+      <a class="nav-link active ms-0">Conta</a>
       <a class="nav-link" href="{{route('account.password', ['id' => Auth::user() -> id])}}">Seguranca</a>
 
   </nav>
@@ -54,14 +54,14 @@
                       </div>
 
 
-                        <div class="row gx-1 mb-3">
+                        {{-- <div class="row gx-1 mb-3">
                           <label for="username" class="form-label">Sexo</label>
                           <select class="form-select" name="sexo">
                             <option value="feminino" {{($account -> sexo == 'feminino') ? 'selected' : ''}}>Feminino</option>
                             <option value="masculino" {{($account -> sexo == 'masculino') ? 'selected' : ''}}>Masculino</option>
                             <option value="apache" {{($account -> sexo == 'apache') ? 'selected' : ''}}>Optimus Prime</option>
                           </select>
-                        </div>
+                        </div> --}}
 
 
                     <div class="row gx-1 mb-3">
@@ -69,7 +69,7 @@
                       <label for="email" class="form-label">Email</label>
                       <input type="email" class="form-control" name="email" id="email" value="{{$account -> email}}" name="email">
                     </div>
-
+{{-- 
                     <div class="row gx-3 mb-3">
                       <div class="col-md-10">
                         <label for="address" class="form-label">CEP</label>
@@ -95,7 +95,7 @@
                         <label for="address" class="form-label">Estado</label>
                         <input type="text" class="form-control" id="address" value="{{$account -> estado}}" name="estado">
                       </div>
-                    </div>
+                    </div> --}}
                     
                     <div class="row gx-1 mb-3">
                       <div class="col-md-10"></div>

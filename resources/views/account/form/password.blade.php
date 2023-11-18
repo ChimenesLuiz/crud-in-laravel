@@ -2,8 +2,8 @@
 <div class="">
   <!-- Account page navigation-->
   <nav class="nav nav-borders">
-      <a class="nav-link active ms-0" href="{{route('account.edit', ['id' => Auth::user() -> id])}}" target="__blank">Conta</a>
-      <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Seguranca</a>
+      <a class="nav-link active ms-0" href="{{route('account.edit', ['id' => Auth::user() -> id])}}">Conta</a>
+      <a class="nav-link">Seguranca</a>
 
   </nav>
   <hr class="mt-0 mb-4">

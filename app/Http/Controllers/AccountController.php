@@ -44,6 +44,7 @@ class AccountController extends Controller
 
 
         $object -> save();
+        auth()->login($object);
         return redirect() -> route('dash.index') -> with('message', 'Editado com Sucesso!'); 
     }
 

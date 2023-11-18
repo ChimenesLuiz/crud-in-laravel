@@ -12,7 +12,7 @@ class Supplier extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'cpnj'
+        'cnpj'
     ];
 
     public function products() : HasMany
