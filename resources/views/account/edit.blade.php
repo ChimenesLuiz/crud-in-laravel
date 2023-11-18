@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@section('user.edit')
-<h1 class="text-center p-3">Editar Usuario: <strong>{{$data -> nome}}</strong></h1>
-  @include('user.form.edit')
+@section('account.edit')
+  @include('account.form.edit')
 @endsection

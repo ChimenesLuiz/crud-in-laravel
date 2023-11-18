@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('endereco', 150)  -> nullable();
             $table->string('cidade', 80)  -> nullable();
             $table->string('estado', 80)  -> nullable();
+            $table->string('avatar')  -> nullable();
             $table->timestamps();
             
             

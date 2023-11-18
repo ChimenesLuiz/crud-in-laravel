@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,57 +19,32 @@ class AccountController extends Controller
         $this -> user = new User();
         $this -> profile = new Profile();
     }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $data = DB::table('profiles')
-        -> select('users.id', 'users.name AS username', 'profiles.name AS profile_name', 'users.email', 'users.cidade')
-        -> join('users', 'users.id_profile', '=', 'profiles.id')
-        -> get();
 
-
-        return view('user.index') -> with('data', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $data = $this -> profile -> all();
-        return view('user.create') -> with('data', $data);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(UserRequest $request)
-    {
-        $request -> password = Hash::make($request -> password);
-
-        $this -> user -> create($request -> except(['_token', 'btn_submit'])); 
-
-        return redirect() -> route('user.index') -> with('message', 'Cadastrado com Sucesso');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-        return view('user.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
+
     {
         $account = $this -> user -> findOrFail($id);
-        dd($account);
         return view('account.edit') -> with('account', $account);
+    }
+
+    public function password(string $id)
+
+    {
+        $account = $this -> user -> findOrFail($id);
+        return view('account.password') -> with('account', $account);
+    }
+
+    public function passwordUpdate(Request $request, string $id)
+    {
+        $request -> validate(['']);
+        $object = $this -> user::find($id);
+
+        
+        $object -> password = Hash::make($request -> password);
+
+
+        $object -> save();
+        return redirect() -> route('dash.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
     /**
@@ -76,8 +52,21 @@ class AccountController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
+        // dd($request);
         $request -> validated();
         $object = $this -> user::find($id);
+
+        if ($request->hasFile('avatar')) {
+            // Obter o arquivo da requisição
+            $avatarFile = $request->file('avatar');
+            // Gerar um nome único para o arquivo usando o timestamp
+            $avatarName = time().'.'.$avatarFile->getClientOriginalExtension();
+        
+            // Mover o arquivo para o diretório 'avatars'
+            $avatarFile->move(public_path('avatars'), $avatarName);
+            // Atualizar o avatar do usuário no banco de dados
+            Auth()->user()->update(['avatar' => $avatarName]);
+        }
 
         $object -> name = $request -> name;
         $object -> last_name = $request -> last_name;
@@ -91,13 +80,5 @@ class AccountController extends Controller
         return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $this -> user -> destroy($id);
-        return redirect() -> route('user.index') -> with('message', 'Excluido com Sucesso');
-    }
 
 }

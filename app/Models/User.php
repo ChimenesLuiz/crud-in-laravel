@@ -27,7 +27,8 @@ class User extends Authenticatable
         'cep',
         'endereco',
         'cidade',
-        'estado'
+        'estado',
+        'avatar'
     ];
 
 }

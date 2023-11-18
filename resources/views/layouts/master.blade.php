@@ -34,6 +34,9 @@
                     @include('layouts.alerts')
                     @yield('login.index')
 
+                    @yield('account.edit')
+                    @yield('account.password')
+
                     @yield('user.index')
                     @yield('user.create')
                     @yield('user.edit')

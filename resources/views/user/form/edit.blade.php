@@ -27,9 +27,9 @@
         <div class="col-6">
           <label for="username" class="form-label">Perfil</label>
           <select class="form-select" name="sexo">
-            <option value="feminino" {{($data -> id_profile == 1) ? 'selected' : ''}}>Sem Perfil</option>
-            <option value="feminino" {{($data -> id_profile == 2) ? 'selected' : ''}}>Colaborador</option>
-            <option value="feminino" {{($data -> id_profile == 3) ? 'selected' : ''}}>Administrador</option>
+            <option value="" {{($data -> id_profile == 1) ? 'selected' : ''}}>Sem Perfil</option>
+            <option value="" {{($data -> id_profile == 2) ? 'selected' : ''}}>Colaborador</option>
+            <option value="" {{($data -> id_profile == 3) ? 'selected' : ''}}>Administrador</option>
           </select>
         </div>
         
