@@ -8,7 +8,7 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class TransactionController extends Controller
 {
     public User $user;
     public Profile $profile;
@@ -27,18 +27,10 @@ class UserController extends Controller
         // -> select('users.id', 'users.name AS username', 'profiles.name AS profile_name', 'users.email')
         // -> join('users', 'users.id_profile', '=', 'profiles.id')
         // -> get();
-        $data = DB::table('profiles')
-        ->select(
-            'users.id AS user_id',
-            'users.name AS user_name',
-            'users.email AS user_email',
-            'profiles.name AS profile_name'
-        )
-        ->rightJoin('users', 'users.id_profile', '=', 'profiles.id')
-        ->get();
 
 
-        return view('user.index') -> with('data', $data);
+        // return view('user.index') -> with('data', $data);
+        return view('transaction.index');
     }
 
     /**
@@ -46,8 +38,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        $data = $this -> profile -> all();
-        return view('user.create') -> with('data', $data);
+        $data = DB::table('transactions')
+        -> select(
+            '*'
+            )
+        -> join('products', 'transactions.id_product', '=', 'products.id')
+        -> join('clients', 'transactions.id_client', '=', 'clients.id')
+        -> get();
+        dd($data);
+        // $data = $this -> profile -> all();
+        return view('transaction.create') -> with('data', $data);
     }
 
     /**
@@ -75,10 +75,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user_data = $this -> user -> findOrFail($id);
-        $profile_data = $this -> profile -> all();
-        return view('user.edit') -> with(['user_data' => $user_data,
-                                        'profile_data' => $profile_data]);
+        $data = $this -> user -> findOrFail($id);
+        return view('user.edit') -> with('data', $data);
     }
 
     /**
@@ -92,8 +90,10 @@ class UserController extends Controller
         $object -> name = $request -> name;
         $object -> last_name = $request -> last_name;
         $object -> email = $request -> email;
-        $object -> id_profile = $request -> id_profile;
-
+        $object -> cep = $request -> cep;
+        $object -> endereco = $request -> endereco;
+        $object -> cidade = $request -> cidade;
+        $object -> estado = $request -> estado;
 
         $object -> save();
         return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 

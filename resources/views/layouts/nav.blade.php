@@ -11,7 +11,7 @@
         <li class="container w-100">
             <button type="button" class="btn btn-light w-100 mb-3">  
                 <a href="{{route('dash.index')}}" class="text-dark text-decoration-none">
-                    <i class="bi bi-speedometer2"></i>
+                    
                     DASHBOARD
                 </a>
             </button>
@@ -20,7 +20,7 @@
         <li class="container w-100">
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('user.index')}} "class="text-dark text-decoration-none">
-                    <i class="bi bi-people"></i>
+                    
                     USUARIOS
                 </a>
             </button>
@@ -28,7 +28,7 @@
         <li class="container w-100">
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('client.index')}} "class="text-dark text-decoration-none">
-                    <i class="bi bi-people"></i>
+                    
                     CLIENTES
                 </a>
             </button>
@@ -37,7 +37,7 @@
         <li class="container w-100">
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('profile.index')}} "class="text-dark text-decoration-none">
-                    <i class="bi bi-people"></i>
+                    
                     PERFIS
                 </a>
             </button>
@@ -46,8 +46,17 @@
         <li class="container w-100">
             <button class="btn btn-light w-100 mb-3">  
                 <a href="{{route('product.index')}} "class="text-dark text-decoration-none">
-                    <i class="bi bi-box"></i>
+                    
                     PRODUTOS
+                </a>
+            </button>
+        </li>
+
+        <li class="container w-100">
+            <button class="btn btn-light w-100 mb-3">  
+                <a href="{{route('transaction.index')}} "class="text-dark text-decoration-none">
+                    
+                    VENDAS
                 </a>
             </button>
         </li>

@@ -66,18 +66,22 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ClientRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
-        $request -> validated();
+        // $request -> validated();
         $object = $this -> client::find($id);
 
-        // $object -> name = $request -> name;
-        // $object -> last_name = $request -> last_name;
-        // $object -> email = $request -> email;
-        // $object -> cep = $request -> cep;
-        // $object -> endereco = $request -> endereco;
-        // $object -> cidade = $request -> cidade;
-        // $object -> estado = $request -> estado;
+        $object -> name = $request -> name;
+        $object -> last_name = $request -> last_name;
+        $object -> email = $request -> email;
+        $object -> phone = $request -> phone;
+        $object -> phone2 = $request -> phone2;
+        $object -> cpf = $request -> cpf;
+        $object -> sexo = $request -> sexo;
+        $object -> cep = $request -> cep;
+        $object -> endereco = $request -> endereco;
+        $object -> cidade = $request -> cidade;
+        $object -> estado = $request -> estado;
 
         $object -> save();
         return redirect() -> route('client.index') -> with('message', 'Editado com Sucesso!'); 

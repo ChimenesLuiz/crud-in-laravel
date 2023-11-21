@@ -15,14 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 120);
             $table->string('last_name', 200)  -> nullable();
-            // $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
-            $table->unsignedBigInteger('id_profile') -> default(1);
+            $table->unsignedBigInteger('id_profile') -> nullable();
             $table->string('email', 150);
             $table->string('password', 255);
-            // $table->string('cep', 8) -> nullable();
-            // $table->string('endereco', 150)  -> nullable();
-            // $table->string('cidade', 80)  -> nullable();
-            // $table->string('estado', 80)  -> nullable();
             $table->string('avatar') -> default('profile_photo.jpg') -> nullable() ;
             $table->timestamps();
             

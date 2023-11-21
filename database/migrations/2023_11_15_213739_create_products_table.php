@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->float('value', 8, 2) -> nullable();
             $table->integer('amount') -> nullable();
-            $table->unsignedBigInteger('id_supplier');
+            $table->unsignedBigInteger('id_supplier') -> nullable();
             $table->timestamps();
 
             $table -> foreign('id_supplier') -> references('id') -> on('suppliers');

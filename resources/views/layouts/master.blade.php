@@ -56,6 +56,10 @@
                     @yield('supplier.index')
                     @yield('supplier.create')
                     @yield('supplier.edit')
+
+                    @yield('transaction.index')
+                    @yield('transaction.create')
+                    @yield('transaction.edit')
                 </div>
             </section>
         </main>

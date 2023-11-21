@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Nette\Utils\Floats;
+use Ramsey\Uuid\Type\Integer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,39 +17,35 @@ class DatabaseSeeder extends Seeder
      */
     public static function run(): void
     {
-            // DB::table('users')->insert([
-            //     'nome' => Str::random(10),
-            //     'sobrenome' => Str::random(10).'@gmail.com',
-            //     'cpf' => Str::random(11),
-            //     'usuario' => Str::random(10),
-            //     'sexo' => 'feminino',
-            //     'id_perfil' => 1,
-            //     'senha' => Hash::make('password'),
-            //     'email' => Str::random(10),
-            //     'cep' => Str::random(8),
-            //     'endereco' => Str::random(10),
-            //     'cidade' => Str::random(10),
-            //     'estado' => Str::random(10)
-            // ]);
-    
-    
-        DB::table('profiles')->insert([
-            'name' => 'Sem Perfil',
-            'usuario' => 0,
-            'produto' => 0,
-            'venda' => 0
-        ]);
-        DB::table('profiles')->insert([
-            'name' => 'Colaborador',
-            'usuario' => 0,
-            'produto' => 1,
-            'venda' => 1
-        ]);
-        DB::table('profiles')->insert([
-            'name' => 'Administrador',
-            'usuario' => 1,
-            'produto' => 1,
-            'venda' => 1
-        ]);
+            //USERS
+            DB::table('users')->insert([
+                'name' => Str::random(10),
+                'last_name' => Str::random(10),
+                'id_profile' => rand(1, 3),
+                'email' => Str::random(10).'@email.com',
+                'password' => Hash::make('password')
+            ]);
+
+            //CLIENTS
+            DB::table('clients')->insert([
+                'name' => Str::random(10),
+                'last_name' => Str::random(10),
+                'phone' => str_pad(rand(0, 99999999999), 11, '0', STR_PAD_LEFT),
+                'cpf' => str_pad(rand(0, 99999999999), 11, '0', STR_PAD_LEFT),
+                'sexo' => 'apache'
+            ]);
+            //SUPPLIERS
+            DB::table('suppliers')->insert([
+                'name' => Str::random(10),
+                'cnpj' => str_pad(rand(0, 99999999999), 14, '0', STR_PAD_LEFT),
+            ]);
+
+            //PRODUCTS
+            DB::table('products')->insert([
+                'name' => Str::random(10),
+                'value' => rand(100, 1000),
+                'ammount' => rand(1, 50),
+                'id_supplier' => rand(1, 3)
+            ]);
     }
 }

@@ -89,25 +89,24 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = $this -> product -> findOrFail($id);
-        return view('product.edit') -> with('product', $product);
+        $supplier_data = $this -> supplier -> all();
+        $product_data = $this -> product -> findOrFail($id);
+        return view('product.edit') -> with(['product_data' => $product_data,
+                                            'supplier_data' => $supplier_data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(productRequest $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
         $request -> validated();
         $object = $this -> product::find($id);
 
+        $object -> id_supplier = $request -> id_supplier;
         $object -> name = $request -> name;
-        $object -> last_name = $request -> last_name;
-        $object -> email = $request -> email;
-        $object -> cep = $request -> cep;
-        $object -> endereco = $request -> endereco;
-        $object -> cidade = $request -> cidade;
-        $object -> estado = $request -> estado;
+        $object -> value = $request -> value;
+        $object -> amount = $request -> amount;
 
         $object -> save();
         return redirect() -> route('product.index') -> with('message', 'Editado com Sucesso!'); 
@@ -122,10 +121,9 @@ class ProductController extends Controller
         return redirect() -> route('product.index') -> with('message', 'Excluido com Sucesso');
     }
 
-    public function storeModal(Request $request)
+    public function storeModal(ProductRequest $request)
 {
-
-    $this -> supplier -> create($request -> except(['_token', 'btn_submit'])); 
+    $this -> supplier -> create($request -> except(['_token'])); 
 
     return redirect() -> route('product.create') -> with('message', 'Fornecedor criado com sucesso');
 }

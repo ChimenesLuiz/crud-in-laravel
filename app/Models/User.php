@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -30,5 +31,8 @@ class User extends Authenticatable
         'estado',
         'avatar'
     ];
-
+    public function transactions() : HasMany
+    {
+        return $this -> hasMany(User::class, 'id_user');
+    }
 }

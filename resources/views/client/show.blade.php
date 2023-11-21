@@ -1,7 +1,7 @@
 
 <button class="btn btn-dark mb-3">
     <i class="bi bi-plus-circle"></i>
-    <a class="text-decoration-none text-white" href="{{route('client.create')}}">CRIAR USUARIO</a>
+    <a class="text-decoration-none text-white" href="{{route('client.create')}}">CRIAR CLIENTE</a>
 </button>
 <table class="table table-hover text-left">
     <thead>

@@ -9,7 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AccountController;
-
+use App\Http\Controllers\TransactionController;
 
 //LOGIN
 Route::controller(LoginController::class) -> group(function () {
@@ -81,11 +81,22 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/supplier', 'index') -> name('supplier.index');
         Route::get('/supplier/create', 'create') -> name('supplier.create');
         Route::post('/supplier', 'store') -> name('supplier.store');
-        Route::post('/supplier/store', 'storeModal') -> name('supplier.storeModal');
-        Route::post('/supplier/create/', 'storeModal') -> name('supplier.storeModal');
+        Route::post('/supplier/store/modal', 'storeModal') -> name('supplier.storeModal');
         Route::get('/supplier/{id?}/edit', 'edit') -> name('supplier.edit');
         Route::put('/supplier/{id}', 'update') -> name('supplier.update');
         Route::get('/supplier/{id?}', 'destroy') -> name('supplier.destroy');
+
+    });
+    //SUPPLIER
+    Route::controller(TransactionController::class)->group(function () {
+        Route::get('/transaction', 'index') -> name('transaction.index');
+        Route::get('/transaction/create', 'create') -> name('transaction.create');
+        Route::post('/transaction', 'store') -> name('transaction.store');
+        Route::post('/transaction/store', 'storeModal') -> name('transaction.storeModal');
+        Route::post('/transaction/create/', 'storeModal') -> name('transaction.storeModal');
+        Route::get('/transaction/{id?}/edit', 'edit') -> name('transaction.edit');
+        Route::put('/transaction/{id}', 'update') -> name('transaction.update');
+        Route::get('/transaction/{id?}', 'destroy') -> name('transaction.destroy');
 
     });
     //ACCOUNT

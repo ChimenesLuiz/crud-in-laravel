@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name', 120);
             $table->string('last_name', 200)  -> nullable();
             $table->string('email', 150);
-            $table->string('phone');
+            $table->integer('phone');
             $table->string('phone2')  -> nullable();
-            $table->string('cpf', 11);
+            $table->char('cpf', 8);
             $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
             $table->string('cep', 8) -> nullable();
             $table->string('endereco', 150)  -> nullable();

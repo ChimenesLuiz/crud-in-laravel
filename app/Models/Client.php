@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Client extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'name',
         'last_name',
@@ -21,5 +23,9 @@ class Client extends Model
         'cidade',
         'estado'
     ];
-    use HasFactory;
+
+    public function transactions() : HasMany
+    {
+        return $this -> hasMany(User::class, 'id_client');
+    }
 }

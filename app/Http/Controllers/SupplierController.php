@@ -49,28 +49,22 @@ class SupplierController extends Controller
      */
     public function edit(string $id)
     {
-        $data = $this -> user -> findOrFail($id);
-        return view('user.edit') -> with('data', $data);
+        $supplier_data = $this -> supplier -> findOrFail($id);
+        return view('supplier.edit') -> with('supplier_data', $supplier_data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
-        $request -> validated();
-        $object = $this -> user::find($id);
+        $object = $this -> supplier::find($id);
 
         $object -> name = $request -> name;
-        $object -> last_name = $request -> last_name;
-        $object -> email = $request -> email;
-        $object -> cep = $request -> cep;
-        $object -> endereco = $request -> endereco;
-        $object -> cidade = $request -> cidade;
-        $object -> estado = $request -> estado;
+        $object -> cnpj = $request -> cnpj;
 
         $object -> save();
-        return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 
+        return redirect() -> route('product.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
     /**

@@ -1,12 +1,12 @@
 
-<form action="{{route('user.update', ['id' => $data -> id])}}" method="POST" novalidate>
+<form action="{{route('client.update', ['id' => $data -> id])}}" method="POST" novalidate>
     @method('PUT')
     @csrf
     @include('user.form.validation')
     <div class="row g-3">
       <div class="col-sm-6">
         <label for="firstName" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="firstName" placeholder="" value="{{$data->name}}" name="name">
+        <input type="text" class="form-control" id="firstName" name="name" placeholder="" value="{{$data->name}}" name="name">
 
       </div>
 
@@ -42,9 +42,9 @@
       <div class="col-12">
         <label for="username" class="form-label">Sexo</label>
         <select class="form-select" name="sexo">
-          <option value="feminino" selected>Feminino</option>
-          <option value="masculino">Masculino</option>
-          <option value="apache">Optimus Prime</option>
+          <option value="feminino" {{($data -> sexo == 'feminino') ? 'selected' : ''}}>Feminino</option>
+          <option value="feminino" {{($data -> sexo == 'masculino') ? 'selected' : ''}}>Masculino</option>
+          <option value="feminino" {{($data -> sexo == 'apache') ? 'selected' : ''}}>Optimus Prime</option>
         </select>
       </div>
 
@@ -63,7 +63,7 @@
 
       <div class="col-6">
         <label for="address" class="form-label">Cidade</label>
-        <input type="text" class="form-control" id="address" value="{{$data->cidade}}" name="cidade">
+        <input type="text" class="form-control" name="cidade" id="address" value="{{$data->cidade}}" name="cidade">
       </div>
       
       <div class="col-6">
