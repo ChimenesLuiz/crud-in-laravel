@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->integer('usuario') -> default(0);
+            $table->integer('cliente') -> default(0);
             $table->integer('perfil') -> default(0);
             $table->integer('produto') -> default(0);
             $table->integer('venda') -> default(0);

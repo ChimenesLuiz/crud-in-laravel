@@ -26,7 +26,8 @@ class UserRequest extends FormRequest
             'name' => 'required',
             // 'sobrenome' => ['required', new CpfValidationRule],
 
-            'email' => 'required'
+            'email' => 'required|email:filter,rfc,dns',
+            'password' => 'required'
             // 'sexo' => 'required',
             // 'cep' => 'required',
             // 'endereco' => 'required',
@@ -39,7 +40,10 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => 'Preencha o campo Nome',
+            'name.min' => 'O campo nome deve ter no minimo :min digitos',
             'email.required' => 'Preencha o campo Email',
+            'email.email' => 'O email deve ser valido',
+            'password.required' => 'Preencha o campo Senha'
             // 'last_name.required' => 'Preencha o campo Sobrenome',
             // 'sexo.required' => 'Preencha o campo Sexo',
             // 'cep.required' => 'Preencha o campo CEP',

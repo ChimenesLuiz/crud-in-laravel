@@ -1,5 +1,5 @@
 
-<form action="{{route('transaction.store')}}" method="post" novalidate>
+<form action="{{route('transaction.store')}}" method="POST" novalidate>
   @csrf
   @include('transaction.form.validation')
     <div class="row g-3">
@@ -8,7 +8,7 @@
       <div class="col-12">
         <label for="username" class="form-label">Cliente</label>
         <select class="form-select" name="id_client">
-          @foreach ($data as $row)
+          @foreach ($client_data as $row)
           <option value="{{$row -> id}}">{{$row -> name}}</option>  
           @endforeach
 
@@ -17,7 +17,7 @@
       <div class="col-12">
         <label for="username" class="form-label">Produto</label>
         <select class="form-select" name="id_product">
-          @foreach ($data as $row)
+          @foreach ($product_data as $row)
           <option value="{{$row -> id}}">{{$row -> name}}</option>  
           @endforeach
 
@@ -41,7 +41,7 @@
     <hr class="my-4">
     <div class="d-flex justify-content-between">
 
-      <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('user.index')}}">Cancelar</a>
+      <a class="w-25 btn btn-danger text-decoration-none text-white" href="{{route('transaction.index')}}">Cancelar</a>
       <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
     </div>
   </form>

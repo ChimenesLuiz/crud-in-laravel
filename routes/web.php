@@ -87,14 +87,14 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
         Route::get('/supplier/{id?}', 'destroy') -> name('supplier.destroy');
 
     });
-    //SUPPLIER
+    //Transaction
     Route::controller(TransactionController::class)->group(function () {
         Route::get('/transaction', 'index') -> name('transaction.index');
         Route::get('/transaction/create', 'create') -> name('transaction.create');
         Route::post('/transaction', 'store') -> name('transaction.store');
         Route::post('/transaction/store', 'storeModal') -> name('transaction.storeModal');
         Route::post('/transaction/create/', 'storeModal') -> name('transaction.storeModal');
-        Route::get('/transaction/{id?}/edit', 'edit') -> name('transaction.edit');
+        Route::get('/transaction/{id}/edit', 'edit') -> name('transaction.edit');
         Route::put('/transaction/{id}', 'update') -> name('transaction.update');
         Route::get('/transaction/{id?}', 'destroy') -> name('transaction.destroy');
 

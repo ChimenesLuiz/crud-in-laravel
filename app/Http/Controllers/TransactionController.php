@@ -1,36 +1,45 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Http\Requests\UserRequest;
-use App\Models\Profile;
+use App\Models\Product;
+use App\Models\Client;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public User $user;
-    public Profile $profile;
+    public Product $product;
+    public Client $client;
+    public Transaction $transaction;
     
     public function __construct()
     {
-        $this -> user = new User();
-        $this -> profile = new Profile();
+        $this -> client = new Client();
+        $this -> product = new Product();
+        $this -> transaction = new Transaction();
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $data = DB::table('profiles')
-        // -> select('users.id', 'users.name AS username', 'profiles.name AS profile_name', 'users.email')
-        // -> join('users', 'users.id_profile', '=', 'profiles.id')
-        // -> get();
+        $data = DB::table('transactions')
+        ->select('transactions.id AS id_transaction',
+                'transactions.total AS transaction_total',
+                'products.id AS id_product',
+                'products.name AS product_name',
+                'products.value AS product_value',
+                'clients.id AS id_client',
+                'clients.name AS client_name',
+                'clients.phone AS client_phone',
+                )
+        ->join('products', 'transactions.id_product', '=', 'products.id')
+        ->join('clients', 'transactions.id_client', '=', 'clients.id')
+        ->get();
 
-
-        // return view('user.index') -> with('data', $data);
-        return view('transaction.index');
+        return view('transaction.index')-> with('data', $data);
     }
 
     /**
@@ -38,28 +47,20 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        $data = DB::table('transactions')
-        -> select(
-            '*'
-            )
-        -> join('products', 'transactions.id_product', '=', 'products.id')
-        -> join('clients', 'transactions.id_client', '=', 'clients.id')
-        -> get();
-        dd($data);
-        // $data = $this -> profile -> all();
-        return view('transaction.create') -> with('data', $data);
+        $product_data = $this -> product -> all();
+        $client_data = $this -> client -> all();
+        return view('transaction.create') -> with(['client_data' => $client_data,
+                                                    'product_data' => $product_data]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        $request -> password = Hash::make($request -> password);
+        $this -> transaction -> create($request -> except(['_token', 'btn_submit'])); 
 
-        $this -> user -> create($request -> except(['_token', 'btn_submit'])); 
-
-        return redirect() -> route('user.index') -> with('message', 'Cadastrado com Sucesso');
+        return redirect() -> route('transaction.index') -> with('message', 'Cadastrado com Sucesso');
     }
 
     /**
@@ -75,28 +76,46 @@ class TransactionController extends Controller
      */
     public function edit(string $id)
     {
-        $data = $this -> user -> findOrFail($id);
-        return view('user.edit') -> with('data', $data);
+        $inner_data = DB::table('transactions')
+        ->select('transactions.id AS id_transaction',
+        'transactions.amount AS amount',
+        'transactions.total AS total',
+        'products.id AS id_product',
+        'products.name AS product_name',
+        'clients.id AS id_client',
+        'clients.name AS client_name'
+        )
+        ->join('products', 'transactions.id_product', '=', 'products.id')
+        ->join('clients', 'transactions.id_client', '=', 'clients.id')
+        ->where('transactions.id', '=', $id)
+        ->get();
+        $inner_data = $inner_data[0];
+
+
+        $product_data = $this -> product -> all();
+        $client_data = $this -> client -> all();
+
+        return view('transaction.edit') -> with(['inner_data' => $inner_data,
+                                                'product_data' => $product_data,
+                                                'client_data' => $client_data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
-        $request -> validated();
-        $object = $this -> user::find($id);
+        $object = $this -> transaction::find($id);
 
-        $object -> name = $request -> name;
-        $object -> last_name = $request -> last_name;
-        $object -> email = $request -> email;
-        $object -> cep = $request -> cep;
-        $object -> endereco = $request -> endereco;
-        $object -> cidade = $request -> cidade;
-        $object -> estado = $request -> estado;
-
+        
+        $object -> id_user =  $request -> id_user;
+        $object -> id_client = $request -> id_client;
+        $object -> id_product = $request -> id_product;
+        $object -> amount = $request -> amount;
+        $object -> total = $request -> total;
+        // dd($object);
         $object -> save();
-        return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 
+        return redirect() -> route('transaction.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
     /**
@@ -104,8 +123,8 @@ class TransactionController extends Controller
      */
     public function destroy(string $id)
     {
-        $this -> user -> destroy($id);
-        return redirect() -> route('user.index') -> with('message', 'Excluido com Sucesso');
+        $this -> transaction -> destroy($id);
+        return redirect() -> route('transaction.index') -> with('message', 'Excluido com Sucesso');
     }
 
 }

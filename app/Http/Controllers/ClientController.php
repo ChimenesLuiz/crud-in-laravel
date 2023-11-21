@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ClientRequest;
 use Illuminate\Http\Request;
 use App\Models\Client;
-use App\Http\Requests\UserRequest;
-use App\Models\Profile;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
 class ClientController extends Controller
 {
     public Client $client;
@@ -45,7 +42,7 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
+    public function store(ClientRequest $request)
     {
 
         $this -> client -> create($request -> except(['_token', 'btn_submit'])); 

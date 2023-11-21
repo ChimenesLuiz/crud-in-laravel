@@ -24,6 +24,7 @@ class ProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'usuario' => '',
+            'cliente' => '',
             'perfil' => '',
             'produto' => '',
             'venda' => ''

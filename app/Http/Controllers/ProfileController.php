@@ -40,8 +40,9 @@ class ProfileController extends Controller
     public function store(ProfileRequest $request)
     {
         $data = $request -> validated();
-        
+        // dd($data);
         (isset($data['usuario'])) ? ($data['usuario'] = ($data['usuario'] === 'on') ? 1 : 0) : 0;
+        (isset($data['cliente'])) ? ($data['cliente'] = ($data['cliente'] === 'on') ? 1 : 0) : 0;
         (isset($data['perfil'])) ? ($data['perfil'] = ($data['perfil'] === 'on') ? 1 : 0) : 0;
         (isset($data['produto'])) ? ($data['produto'] = ($data['produto'] === 'on') ? 1 : 0) : 0;
         (isset($data['venda'])) ? ($data['venda'] = ($data['venda'] === 'on') ? 1 : 0) : 0;
