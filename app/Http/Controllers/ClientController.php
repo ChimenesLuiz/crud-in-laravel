@@ -44,8 +44,19 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
+        $validated = $request -> validated();
 
-        $this -> client -> create($request -> except(['_token', 'btn_submit'])); 
+
+        $validated['cpf'] = str_replace(array('.','-','/'), "", $validated['cpf']);
+        $validated['phone'] = str_replace(array('(', ')', '-','/'), "", $validated['phone']);
+        isset($validated['phone2']) ? ($validated['phone2'] = str_replace(array('(', ')', '-','/'), "", $validated['phone2'])) : null;
+        $validated['cep'] = str_replace(array('.','-','/'), "", $validated['cep']);
+        
+        $date = \DateTime::createFromFormat('d/m/Y', $validated['nascimento']);
+        $date->format('Y-m-d');
+        $validated['nascimento'] = $date;
+        
+        $this -> client -> create($validated); 
 
         return redirect() -> route('client.index') -> with('message', 'Cadastrado com Sucesso');
     }

@@ -24,15 +24,9 @@ class UserRequest extends FormRequest
 
         return [
             'name' => 'required',
-            // 'sobrenome' => ['required', new CpfValidationRule],
-
             'email' => 'required|email:filter,rfc,dns',
             'password' => 'required'
-            // 'sexo' => 'required',
-            // 'cep' => 'required',
-            // 'endereco' => 'required',
-            // 'cidade' => 'required',
-            // 'estado' => 'required'
+
         ];
     }
 

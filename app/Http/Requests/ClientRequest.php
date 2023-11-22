@@ -27,8 +27,10 @@ class ClientRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email:filter,rfc,dns',
             'phone' => 'required|telefone_com_ddd',
-            'cpf' => ['required', new FormatoCpf],
+            'cpf' => [new FormatoCpf],
+            'nascimento' => ['required'],
             'cep' => ['required', new FormatoCep],
+            'sexo' => ['required']
 
         ];
     }
@@ -37,7 +39,11 @@ class ClientRequest extends FormRequest
     {
         return [
             'name.required' => 'Preencha o campo Nome',
-            'phone.telefone_com_ddd' => 'Digite o numero de telefone com DDD'
+            'phone.telefone_com_ddd' => 'Digite o numero de telefone com DDD corretamente',
+            'nascimento.required' => 'Preencha o campo Nascimento',
+            'cep.required' => 'Preencha o campo CEP',
+            'sexo.required' => 'Preencha o campo Sexo'
+
         ];
     }
 }

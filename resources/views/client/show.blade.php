@@ -20,10 +20,10 @@
         <tr>
             <td>{{$row -> name}}</td>
             <td>{{$row -> email}}</td>
-            <td>{{$row -> phone}}</td>
-            <td>{{$row -> cpf}}</td>
+            <td class="phone">{{$row -> phone}}</td>
+            <td class="cpf">{{$row -> cpf}}</td>
             <td>{{$row -> sexo}}</td>
-            <td>{{$row -> cep}}</td>
+            <td class="cep">{{$row -> cep}}</td>
             <td>
                 <a href="{{route('client.edit', ['id' => $row -> id])}}" class="link-dark mx-1">
                     <i class="bi bi-pencil-square" style="font-size: 20px;"></i>

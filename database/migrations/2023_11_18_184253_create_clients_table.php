@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('email', 150);
             $table->string('phone');
             $table->string('phone2')  -> nullable();
-            $table->char('cpf', 8);
+            $table->char('cpf', 11);
+            $table->dateTime('nascimento')  -> nullable();
             $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
             $table->string('cep', 8) -> nullable();
             $table->string('endereco', 150)  -> nullable();

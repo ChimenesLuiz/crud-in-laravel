@@ -17,6 +17,7 @@ class Client extends Model
         'phone',
         'phone2',
         'cpf',
+        'nascimento',
         'sexo',
         'cep',
         'endereco',

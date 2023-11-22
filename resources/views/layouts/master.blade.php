@@ -1,11 +1,9 @@
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 <!DOCTYPE html>
 <html lang="pt">
     <head>
         @include('layouts.titles')
-        {{-- BOOTSTRAP EXAMPLES NAVBAR --}}
-        {{-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/"> --}}
-
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         
@@ -20,12 +18,20 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
 
-        {{-- CSS FEIAO --}}
-        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
+
+        <script src="{{asset('assets/jquery.js')}}"></script>
+        <script src="{{asset('assets/jquery.mask.min.js')}}"></script>
+        <script src="{{asset('js/maskingOn.js')}}"></script>
+
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
+    <script>
+        $(document).ready(function(){
+            maskingOnClient();
+        })
+    </script>
     <body class="container-fluid">
         <main class="h-100 row">
             @include('layouts.nav')
@@ -63,6 +69,6 @@
                 </div>
             </section>
         </main>
-        <script src="{{asset('js/sidebar.js')}}"></script>
+
     </body>
 </html>

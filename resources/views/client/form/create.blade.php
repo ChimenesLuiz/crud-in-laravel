@@ -1,4 +1,5 @@
-<form action="{{route('client.store')}}" method="post" novalidate>
+
+<form action="{{route('client.store')}}" method="POST" novalidate>
   @csrf
   @include('client.form.validation')
     <div class="row g-3">
@@ -22,19 +23,25 @@
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Telefone 1</label>
-        <input type="email" class="form-control" id="email" name="phone">
+        <input type="text" class="form-control" id="phone" name="phone">
       </div>
 
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Telefone 2</label>
-        <input type="email" class="form-control" id="email" name="phone2">
+        <input type="text" class="form-control" id="phone2" name="phone2">
       </div>
 
-      <div class="col-12">
+      <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">CPF</label>
-        <input type="email" class="form-control" id="email" name="cpf">
+        <input type="text" class="form-control" id="cpf" name="cpf">
+      </div>
+
+      <div class="col-sm-6">
+        {{-- <span class="text-muted">(Opcional)</span> --}}
+        <label for="email" class="form-label">Data de Nascimento</label>
+        <input class="form-control" name="nascimento" id="date" placeholder="DD-MM-YYYY">
       </div>
 
       <div class="col-12">
@@ -49,7 +56,7 @@
       
       <div class="col-10">
         <label for="address" class="form-label">CEP</label>
-        <input type="text" class="form-control" id="address" name="cep">
+        <input type="text" class="form-control" id="cep" name="cep">
       </div>
 
       <a class="d-flex col-2 justify-content-center mt-5 btn btn-success text-decoration-none text-white" href="{{route('user.index')}}">Buscar</a>
