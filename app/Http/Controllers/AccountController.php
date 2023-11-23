@@ -86,13 +86,9 @@ class AccountController extends Controller
         $object -> name = $request -> name;
         $object -> last_name = $request -> last_name;
         $object -> email = $request -> email;
-        $object -> cep = $request -> cep;
-        $object -> endereco = $request -> endereco;
-        $object -> cidade = $request -> cidade;
-        $object -> estado = $request -> estado;
 
         $object -> save();
-        return redirect() -> route('user.index') -> with('message', 'Editado com Sucesso!'); 
+        return redirect() -> route('dash.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
 

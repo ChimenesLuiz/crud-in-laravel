@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ClientRequest;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use Carbon\Carbon;
+
+
 class ClientController extends Controller
 {
     public Client $client;
@@ -44,6 +47,7 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
+        // dd($request);
         $validated = $request -> validated();
 
 
@@ -55,6 +59,7 @@ class ClientController extends Controller
         $date = \DateTime::createFromFormat('d/m/Y', $validated['nascimento']);
         $date->format('Y-m-d');
         $validated['nascimento'] = $date;
+        // dd($validated);
         
         $this -> client -> create($validated); 
 
@@ -68,28 +73,48 @@ class ClientController extends Controller
     public function edit(string $id)
     {
         $data = $this -> client -> findOrFail($id);
+
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $data->nascimento);
+
+        $formattedDate = $date->format('d/m/Y');
+
+        $data->nascimento = $formattedDate;
+
         return view('client.edit') -> with('data', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ClientRequest $request, string $id)
     {
-        // $request -> validated();
+        $validated = $request -> validated();
+
+        $validated['cpf'] = str_replace(array('.','-','/'), "", $validated['cpf']);
+        $validated['phone'] = str_replace(array('(', ')', '-','/'), "", $validated['phone']);
+        isset($validated['phone2']) ? ($validated['phone2'] = str_replace(array('(', ')', '-','/'), "", $validated['phone2'])) : null;
+        $validated['cep'] = str_replace(array('.','-','/'), "", $validated['cep']);
+        
+        $date = \DateTime::createFromFormat('d/m/Y', $validated['nascimento']);
+        $date->format('Y-m-d');
+        $validated['nascimento'] = $date;
+
+
         $object = $this -> client::find($id);
 
-        $object -> name = $request -> name;
-        $object -> last_name = $request -> last_name;
-        $object -> email = $request -> email;
-        $object -> phone = $request -> phone;
-        $object -> phone2 = $request -> phone2;
-        $object -> cpf = $request -> cpf;
-        $object -> sexo = $request -> sexo;
-        $object -> cep = $request -> cep;
-        $object -> endereco = $request -> endereco;
-        $object -> cidade = $request -> cidade;
-        $object -> estado = $request -> estado;
+        $object -> name = $validated['name'];
+        $object -> last_name = $validated['last_name'];
+        $object -> email = $validated['email'];
+        $object -> phone = $validated['phone'];
+        $object -> phone2 = $validated['phone2'];
+        $object -> cpf = $validated['cpf'];
+        $object -> nascimento = $validated['nascimento'];
+        $object -> sexo = $validated['sexo'];
+        $object -> cep = $validated['cep'];
+        $object -> endereco = $validated['endereco'];
+        $object -> cidade = $validated['cidade'];
+        $object -> estado = $validated['estado'];
+
 
         $object -> save();
         return redirect() -> route('client.index') -> with('message', 'Editado com Sucesso!'); 

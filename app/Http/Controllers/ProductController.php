@@ -61,6 +61,7 @@ class ProductController extends Controller
     public function create()
     {
         $supplier = $this -> supplier -> all();
+        // dd($supplier);
 
         return view('product.create') -> with('supplier', $supplier);
     }
@@ -68,10 +69,12 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        // dd($request);
-        $this -> product -> create($request -> except(['_token', 'btn_submit'])); 
+        $validated = $request -> validATED();
+        $validated['value'] = str_replace(array('.',',','/'), "", $validated['value']);
+        // dd($validated);
+        $this -> product -> create($validated); 
 
         return redirect() -> route('product.index') -> with('message', 'Cadastrado com Sucesso');
     }
@@ -89,10 +92,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $supplier_data = $this -> supplier -> all();
-        $product_data = $this -> product -> findOrFail($id);
-        return view('product.edit') -> with(['product_data' => $product_data,
-                                            'supplier_data' => $supplier_data]);
+        $supplier = $this -> supplier -> all();
+        $product = $this -> product -> findOrFail($id);
+        return view('product.edit') -> with(['product' => $product,
+                                            'supplier' => $supplier]);
     }
 
     /**
@@ -100,13 +103,17 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, string $id)
     {
-        $request -> validated();
+        $validated = $request -> validated();
+
+
         $object = $this -> product::find($id);
 
-        $object -> id_supplier = $request -> id_supplier;
-        $object -> name = $request -> name;
-        $object -> value = $request -> value;
-        $object -> amount = $request -> amount;
+        $validated['value'] = str_replace(array('.',',','/'), "", $validated['value']);
+
+        $object -> id_supplier =  $validated['id_supplier'];
+        $object -> name =  $validated['name'];
+        $object -> value =  $validated['value'];
+        $object -> amount =  $validated['amount'];
 
         $object -> save();
         return redirect() -> route('product.index') -> with('message', 'Editado com Sucesso!'); 
@@ -120,11 +127,5 @@ class ProductController extends Controller
         $this -> product -> destroy($id);
         return redirect() -> route('product.index') -> with('message', 'Excluido com Sucesso');
     }
-
-    public function storeModal(Request $request)
-{
-    $this -> supplier -> create($request -> except(['_token'])); 
-
-    return redirect() -> route('product.create') -> with('message', 'Fornecedor criado com sucesso');
 }
-}
+

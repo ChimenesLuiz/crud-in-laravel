@@ -1,4 +1,3 @@
-
 <form action="{{route('client.update', ['id' => $data -> id])}}" method="POST" novalidate>
     @method('PUT')
     @csrf
@@ -24,19 +23,25 @@
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Telefone 1</label>
-        <input type="email" class="form-control" id="email" value="{{$data->phone}}" name="phone">
+        <input type="email" class="form-control phone" id="email" value="{{$data->phone}}" name="phone">
       </div>
 
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Telefone 2</label>
-        <input type="email" class="form-control" id="email" value="{{$data->phone2}}" name="phone2">
+        <input type="email" class="form-control phone" id="email" value="{{$data->phone2}}" name="phone2">
       </div>
 
-      <div class="col-12">
+      <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">CPF</label>
-        <input type="email" class="form-control" value="{{$data->cpf}}" id="email" name="cpf">
+        <input type="text" class="form-control cpf" id="cpf" value="{{$data->cpf}}" name="cpf">
+      </div>
+
+      <div class="col-sm-6">
+        {{-- <span class="text-muted">(Opcional)</span> --}}
+        <label for="email" class="form-label">Data de Nascimento</label>
+        <input class="form-control" name="nascimento" id="date" placeholder="DD-MM-YYYY" value="{{$data->nascimento}}">
       </div>
 
       <div class="col-12">
@@ -51,7 +56,7 @@
       
       <div class="col-10">
         <label for="address" class="form-label">CEP</label>
-        <input type="text" class="form-control"  value="{{$data->name}}" id="address" name="cep">
+        <input type="text" class="form-control cep"  value="{{$data->cep}}" id="address" name="cep">
       </div>
 
       <a class="d-flex col-2 justify-content-center mt-5 btn btn-success text-decoration-none text-white" href="{{route('user.index')}}">Buscar</a>

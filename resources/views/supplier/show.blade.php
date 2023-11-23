@@ -16,8 +16,8 @@
         <tbody>
         @foreach ($data as $row)
             <tr>
-                <td>{{$row -> supplier_name}}</td>
-                <td>{{$row -> supplier_cnpj}}</td>
+                <td >{{$row -> supplier_name}}</td>
+                <td class="cnpj">{{$row -> supplier_cnpj}}</td>
                 <td>
                     <a href="{{route('supplier.edit', ['id' => $row -> supplier_id])}}" class="link-dark mx-1">
                         <i class="bi bi-pencil-square" style="font-size: 20px;"></i>

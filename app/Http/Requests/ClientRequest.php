@@ -25,12 +25,17 @@ class ClientRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'last_name' => '',
             'email' => 'required|email:filter,rfc,dns',
             'phone' => 'required|telefone_com_ddd',
+            'phone2' => '',
             'cpf' => [new FormatoCpf],
             'nascimento' => ['required'],
             'cep' => ['required', new FormatoCep],
-            'sexo' => ['required']
+            'sexo' => ['required'],
+            'endereco' => '',
+            'cidade' => '',
+            'estado' => ''
 
         ];
     }

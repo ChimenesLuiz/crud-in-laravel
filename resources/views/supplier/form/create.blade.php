@@ -9,9 +9,9 @@
       </div>
 
       <div class="col-6">
-        <label for="username" class="form-label">CPNJ</label>
+        <label for="username" class="form-label">CNPJ</label>
         <div class="input-group has-validation">
-          <input type="text" class="form-control" id="username"  name="cnpj">
+          <input type="text" class="form-control cnpj" id="username"  name="cnpj">
         </div>
       </div>
       

@@ -17,12 +17,16 @@
 
 
     <div class="row g-3">
-      <div class="col-sm-6">
+      <div class="col-12">
         <label for="firstName" class="form-label">Produto nome</label>
         <input type="text" class="form-control" id="firstName" placeholder="" value="" name="name">
       </div>
 
-      <div class="col-6">
+      <div class="col-sm-6">
+        <label for="lastName" class="form-label">Quantidade</label>
+        <input type="text" class="form-control" id="lastName" placeholder="" value="" name="amount">
+      </div>
+      <div class="col-sm-6">
         <label for="username" class="form-label">Valor</label>
         <div class="input-group has-validation">
           <span class="input-group-text">R$</span>
@@ -31,10 +35,6 @@
       </div>
 
 
-      <div class="col-12">
-        <label for="lastName" class="form-label">Quantidade</label>
-        <input type="text" class="form-control" id="lastName" placeholder="" value="" name="amount">
-      </div>
 
       
       

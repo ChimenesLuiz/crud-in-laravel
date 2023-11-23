@@ -21,8 +21,9 @@
           @foreach ($profile_data as $row)
           @if ($row -> id == $user_data -> id_profile)
           <option value="{{$row -> id}}" selected>{{$row -> name}}</option>  
-          @endif
+          @else
           <option value="{{$row -> id}}">{{$row -> name}}</option>  
+          @endif
           @endforeach
         </select>
       </div>

@@ -1,5 +1,5 @@
 
-<form action="{{route('product.update', ['id' => $product_data -> id])}}" method="POST" novalidate>
+<form action="{{route('product.update', ['id' => $product -> id])}}" method="POST" novalidate>
   @method('PUT')
   @csrf
   @include('user.form.validation')
@@ -8,11 +8,12 @@
       <label for="username" class="form-label">Fornecedor</label>
       <select class="form-select" name="id_supplier">
         <option value="void" selected>Nenhum</option>
-        @foreach ($supplier_data as $row)
-        @if ($row -> id == $product_data -> id_supplier)
+        @foreach ($supplier as $row)
+        @if ($row -> id == $product -> id_supplier)
         <option selected value="{{$row -> id}}">{{$row -> name}}</option>  
+        @else
+        <option value="{{$row -> id}}">{{$row -> name}}</option>  
         @endif
-          <option value="{{$row -> id}}">{{$row -> name}}</option>  
         @endforeach
       </select>
     </div>
@@ -21,24 +22,26 @@
 
 
     <div class="row g-3">
-      <div class="col-sm-6">
+      <div class="col-12">
         <label for="firstName" class="form-label">Produto nome</label>
-        <input type="text" class="form-control" id="firstName" placeholder="" value="{{$product_data -> name}}" name="name">
+        <input type="text" class="form-control" id="firstName" placeholder="" value="{{$product -> name}}" name="name">
       </div>
 
-      <div class="col-6">
+
+      <div class="col-sm-6">
+        <label for="lastName" class="form-label">Quantidade</label>
+        <input type="text" class="form-control" id="lastName" placeholder="" value="{{$product -> amount}}" name="amount">
+      </div>
+
+      <div class="col-sm-6">
         <label for="username" class="form-label">Valor</label>
         <div class="input-group has-validation">
           <span class="input-group-text">R$</span>
-          <input type="text" value="{{$product_data -> value}}" class="form-control" id="username"  name="value">
+          <input type="text" value="{{$product -> value}}" class="form-control value" id="username"  name="value">
         </div>
       </div>
 
 
-      <div class="col-12">
-        <label for="lastName" class="form-label">Quantidade</label>
-        <input type="text" class="form-control" id="lastName" placeholder="" value="{{$product_data -> amount}}" name="amount">
-      </div>
 
       
       

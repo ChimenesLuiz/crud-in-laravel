@@ -47,7 +47,15 @@ class LoginController extends Controller
                                 'email' => $validated['email'],
                                 'password' => $validated['password']]); 
 
-        return redirect()-> route('dash.index');
+        $credentials = $request->only('email', 'password');
+        
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()-> route('dash.index');
+        }
+    
+        return back()->withErrors(['error' => 'Credenciais inválidas']);
+        
     }
 
 

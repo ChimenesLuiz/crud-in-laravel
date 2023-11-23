@@ -33,6 +33,7 @@ class SupplierController extends Controller
     {
         $validated = $request -> validate(['name' => ['required'],
                                             'cnpj' => ['required', new FormatoCnpj]]);
+
         $validated['cnpj'] = str_replace(array('.','-','/'), "", $validated['cnpj']);
 
         $this -> supplier -> create($validated); 
@@ -43,7 +44,10 @@ class SupplierController extends Controller
     public function storeModal(Request $request)
     {
         $validated = $request -> validate(['name' => ['required'],
-                                            'cnpj' => ['required', new FormatoCnpj]]);
+                                            'cnpj' => ['required', new FormatoCnpj]],
+                                        ['name.required' => 'Preencha o campo nome',
+                                        'cnpj.required' => 'Preencha o campo CNPJ',
+                                    ]);
         $validated['cnpj'] = str_replace(array('.','-','/'), "", $validated['cnpj']);
 
         $this -> supplier -> create($validated); 
@@ -56,8 +60,8 @@ class SupplierController extends Controller
      */
     public function edit(string $id)
     {
-        $supplier_data = $this -> supplier -> findOrFail($id);
-        return view('supplier.edit') -> with('supplier_data', $supplier_data);
+        $supplier = $this -> supplier -> findOrFail($id);
+        return view('supplier.edit') -> with('supplier', $supplier);
     }
 
     /**
@@ -65,10 +69,13 @@ class SupplierController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request -> validate(['name' => ['required'],
+        'cnpj' => ['required', new FormatoCnpj]]);
+        $validated['cnpj'] = str_replace(array('.','-','/'), "", $validated['cnpj']);
         $object = $this -> supplier::find($id);
 
-        $object -> name = $request -> name;
-        $object -> cnpj = $request -> cnpj;
+        $object -> name = $validated['name'];
+        $object -> cnpj = $validated['cnpj'];
 
         $object -> save();
         return redirect() -> route('product.index') -> with('message', 'Editado com Sucesso!'); 
