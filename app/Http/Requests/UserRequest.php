@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email:filter,rfc,dns',
-            'password' => 'required'
+            'password' => ['required', 'string', 'min:6'],
 
         ];
     }
@@ -37,13 +37,8 @@ class UserRequest extends FormRequest
             'name.min' => 'O campo nome deve ter no minimo :min digitos',
             'email.required' => 'Preencha o campo Email',
             'email.email' => 'O email deve ser valido',
-            'password.required' => 'Preencha o campo Senha'
-            // 'last_name.required' => 'Preencha o campo Sobrenome',
-            // 'sexo.required' => 'Preencha o campo Sexo',
-            // 'cep.required' => 'Preencha o campo CEP',
-            // 'endereco.required' => 'Preencha o campo Endereco',
-            // 'cidade.required' => 'Preencha o campo Cidade',
-            // 'estado.required' => 'Preencha o campo Estado'
+            'password.required' => 'Preencha o campo Senha',
+            'password.min' => 'O campo senha deve ter no minimo :min caracteres'        
         ];
     }
 }

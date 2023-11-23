@@ -33,7 +33,7 @@
         <label for="username" class="form-label">Total</label>
         <div class="input-group has-validation">
           <span class="input-group-text">R$</span>
-          <input type="text" class="form-control" id="username"  name="total">
+          <input type="text" class="form-control" id="total"  name="total">
         </div>
       </div>
       

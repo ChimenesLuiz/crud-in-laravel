@@ -36,7 +36,7 @@
 
                         <div class="row gx-3 mb-3">
                               <label class="small mb-1" for="inputFirstName">Senha Antiga</label>
-                              <input class="form-control" name="old_password" id="inputFirstName" type="password"  value="">
+                              <input class="form-control" name="current_password" id="inputFirstName" type="password"  value="">
                           </div>
                         <div class="row gx-3 mb-3">
                             <label class="small mb-1" for="inputFirstName">Nova Senha</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="row gx-3 mb-3">
                           <label class="small mb-1" for="inputFirstName">Confirmar Nova Senha</label>
-                          <input class="form-control" name="confirm_password" id="inputFirstName" type="password"  value="">
+                          <input class="form-control" name="password_confirmation" id="inputFirstName" type="password"  value="">
                         </div>
                       
 

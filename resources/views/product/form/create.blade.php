@@ -26,7 +26,7 @@
         <label for="username" class="form-label">Valor</label>
         <div class="input-group has-validation">
           <span class="input-group-text">R$</span>
-          <input type="text" class="form-control" id="username"  name="value">
+          <input type="text" class="form-control" id="value"  name="value">
         </div>
       </div>
 

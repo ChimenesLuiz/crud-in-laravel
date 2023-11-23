@@ -8,6 +8,7 @@ use App\Models\Profile;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use LaravelLegends\PtBrValidator\Rules\FormatoCnpj;
 
 class SupplierController extends Controller
 {
@@ -30,16 +31,22 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request -> validate(['name' => ['required'],
+                                            'cnpj' => ['required', new FormatoCnpj]]);
+        $validated['cnpj'] = str_replace(array('.','-','/'), "", $validated['cnpj']);
 
-        $this -> supplier -> create($request -> except(['_token', 'btn_submit'])); 
+        $this -> supplier -> create($validated); 
 
         return redirect() -> route('product.index') -> with('message', 'Cadastrado com Sucesso');
     }
 
-    public function storeModal(UserRequest $request)
+    public function storeModal(Request $request)
     {
+        $validated = $request -> validate(['name' => ['required'],
+                                            'cnpj' => ['required', new FormatoCnpj]]);
+        $validated['cnpj'] = str_replace(array('.','-','/'), "", $validated['cnpj']);
 
-        $this -> supplier -> create($request -> except(['_token', 'btn_submit'])); 
+        $this -> supplier -> create($validated); 
 
         return redirect() -> route('product.create') -> with('message', 'Cadastrado com Sucesso');
     }

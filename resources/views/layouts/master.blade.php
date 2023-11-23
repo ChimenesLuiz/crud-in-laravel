@@ -30,6 +30,9 @@
     <script>
         $(document).ready(function(){
             maskingOnClient();
+            maskingOnProduct();
+            maskingOnSupplier();
+            maskingOnTransaction();
         })
     </script>
     <body class="container-fluid">

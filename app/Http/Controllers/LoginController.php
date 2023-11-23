@@ -34,8 +34,8 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $validated = $request -> validate([ 'name' => 'required',
-                                            'email' => ['unique:users,email, required'],
-                                            'password' => 'required'],
+                                            'email' => 'required|email:filter,rfc,dns',
+                                            'password' => ['required', 'string', 'min:6']],
                                         ['name.required' => 'O campo nome e obrigatorio',
                                         'email.required' => 'O campo nome e obrigatorio',
                                         'password.required' => 'O campo nome e obrigatorio',

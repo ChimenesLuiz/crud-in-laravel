@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use App\Models\Profile;
+use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -36,25 +37,38 @@ class AccountController extends Controller
 
     public function passwordUpdate(Request $request, string $id)
     {
-        $request -> validate(['']);
+        $validated = $request -> validate(['current_password' => ['required', 'current_password'],
+        'password' => ['min:6', 'required', 'confirmed'],
+        'password_confirmation' => ['min:6', 'required']
+                                        ],
+                                        ['current_password.required' => 'Digite uma Senha antiga',
+                                        'current_password.current_password' => 'Sua senha antiga nao esta correta',
+                                        'password.min' => 'A senha deve ter no minimo :min caracteres',
+                                        'password.required' => 'Digite uma Senha antiga',
+                                        'password.confirmed' => 'As senhas nao coincidem',
+                                        'password_confirmation.min' => 'A senha deve ter no minimo :min caracteres',
+                                        'password_confirmation.required' => 'Confirme a sua nova senha'
+                                        
+                                        
+                                    ]);
         $object = $this -> user::find($id);
 
-        
-        $object -> password = Hash::make($request -> password);
-
+        $object -> password = Hash::make($validated['password']);
 
         $object -> save();
+
         auth()->login($object);
+
         return redirect() -> route('dash.index') -> with('message', 'Editado com Sucesso!'); 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
         // dd($request);
-        $request -> validated();
+        // $request -> validated();
         $object = $this -> user::find($id);
 
         if ($request->hasFile('avatar')) {

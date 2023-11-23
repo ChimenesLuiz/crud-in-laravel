@@ -21,7 +21,7 @@
                 @isset($row -> product_id)
                 <tr>
                     <td>{{$row -> product_name}}</td>
-                    <td>{{$row -> value}}</td>
+                    <td class="value" >{{$row -> value}}</td>
                     <td>{{$row -> amount}}</td>
                     <td>{{$row -> supplier_name}}</td>
                     <td>

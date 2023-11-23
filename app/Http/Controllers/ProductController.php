@@ -68,7 +68,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
         // dd($request);
         $this -> product -> create($request -> except(['_token', 'btn_submit'])); 
@@ -121,7 +121,7 @@ class ProductController extends Controller
         return redirect() -> route('product.index') -> with('message', 'Excluido com Sucesso');
     }
 
-    public function storeModal(ProductRequest $request)
+    public function storeModal(Request $request)
 {
     $this -> supplier -> create($request -> except(['_token'])); 
 
