@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
+        {{-- <link rel="stylesheet" href="{{asset('css/clear.css')}}"> --}}
         @include('layouts.titles')
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -35,11 +36,10 @@
             maskingOnTransaction();
         })
     </script>
-    <body class="container-fluid">
-        <main class="h-100 row">
-            @include('layouts.nav')
-            <section class="col-sm-10" style="background-color: #f5f5f5">
-                <div class="container p-5">
+    <body>
+        @include('layouts.nav')
+        <main class="container-fluid w-100 h-100" style="background-color: #dbdbdb">
+            <section class="container px-3 py-5">
                     @include('layouts.alerts')
                     @yield('login.index')
 
@@ -69,7 +69,6 @@
                     @yield('transaction.index')
                     @yield('transaction.create')
                     @yield('transaction.edit')
-                </div>
             </section>
         </main>
 
