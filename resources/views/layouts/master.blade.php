@@ -34,12 +34,13 @@
             maskingOnProduct();
             maskingOnSupplier();
             maskingOnTransaction();
+
         })
     </script>
-    <body>
+    <body class="w-100 h-100" style="background-color: #dbdbdb;">
         @include('layouts.nav')
-        <main class="container-fluid w-100 h-100" style="background-color: #dbdbdb">
-            <section class="container px-3 py-5">
+        <main class="container-fluid w-100">
+            <section class="container h-100 w-100 px-3 py-5">
                     @include('layouts.alerts')
                     @yield('login.index')
 

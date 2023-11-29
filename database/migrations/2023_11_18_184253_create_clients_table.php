@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('cep', 8) -> nullable();
             $table->string('endereco', 150)  -> nullable();
             $table->string('cidade', 80)  -> nullable();
-            $table->string('estado', 80)  -> nullable();
+            $table->char('estado', 2)  -> nullable();
             
             
             $table->timestamps();
@@ -36,6 +36,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('clients');
+        Schema::enableForeignKeyConstraints();
     }
 };
