@@ -50,7 +50,6 @@ class ClientController extends Controller
         // dd($request);
         $validated = $request -> validated();
 
-
         $validated['cpf'] = str_replace(array('.','-','/'), "", $validated['cpf']);
         $validated['phone'] = str_replace(array('(', ')', '-','/'), "", $validated['phone']);
         isset($validated['phone2']) ? ($validated['phone2'] = str_replace(array('(', ')', '-','/'), "", $validated['phone2'])) : null;
@@ -59,8 +58,8 @@ class ClientController extends Controller
         $date = \DateTime::createFromFormat('d/m/Y', $validated['nascimento']);
         $date->format('Y-m-d');
         $validated['nascimento'] = $date;
-        // dd($validated);
         
+        // dd($validated);
         $this -> client -> create($validated); 
 
         return redirect() -> route('client.index') -> with('message', 'Cadastrado com Sucesso');
@@ -89,7 +88,7 @@ class ClientController extends Controller
     public function update(ClientRequest $request, string $id)
     {
         $validated = $request -> validated();
-
+        // dd($validated);
         $validated['cpf'] = str_replace(array('.','-','/'), "", $validated['cpf']);
         $validated['phone'] = str_replace(array('(', ')', '-','/'), "", $validated['phone']);
         isset($validated['phone2']) ? ($validated['phone2'] = str_replace(array('(', ')', '-','/'), "", $validated['phone2'])) : null;
@@ -112,8 +111,8 @@ class ClientController extends Controller
         $object -> sexo = $validated['sexo'];
         $object -> cep = $validated['cep'];
         $object -> endereco = $validated['endereco'];
-        $object -> cidade = $validated['cidade'];
         $object -> estado = $validated['estado'];
+        $object -> cidade = $validated['cidade'];
 
 
         $object -> save();

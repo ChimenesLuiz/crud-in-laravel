@@ -1,3 +1,4 @@
+
 var cep;
 var endereco;
 var cidade;
@@ -9,7 +10,7 @@ cidade = document.getElementById('cidade');
 estado = document.getElementById('estado');
 msgerror = document.getElementById('msgerror');
 
-msgerror.innerHTML = '';
+
 
 function limpar_campos()
 {
@@ -17,19 +18,29 @@ function limpar_campos()
     cidade.value=("");
     estado.value=("");
 }
+
+function bloquearSelect(e) {
+    e.preventDefault();
+    estado.blur();
+}
+
 function desbloquear_campos()
 {
     limpar_campos()
-    $("#endereco").prop("disabled", false);
-    $("#cidade").prop("disabled", false);
-    $("#estado").prop("disabled", false);
+    endereco.readOnly = false;
+    cidade.readOnly = false;
+    estado.removeEventListener('mousedown', bloquearSelect);
+    estado.removeEventListener('keydown', bloquearSelect);
 
 }
 function bloquear_campos()
 {
-    $("#endereco").prop("disabled", true);
-    $("#cidade").prop("disabled", true);
-    $("#estado").prop("disabled", true);
+    endereco.readOnly = true;
+    cidade.readOnly = true;
+    estado.addEventListener('mousedown', bloquearSelect);
+
+    estado.addEventListener('keydown', bloquearSelect);
+
 }
 
 function showError(message)
@@ -82,10 +93,12 @@ function jsonData(conteudo)
     }
     else
     {
-        limpar_campos()
+        // limpar_campos()
+        document.getElementById('endereco').value = conteudo.logradouro;
+        document.getElementById('cidade').value = conteudo.localidade;
+        document.getElementById('estado').value = conteudo.uf;
         bloquear_campos()
-        document.getElementById('endereco').value=(conteudo.logradouro);
-        document.getElementById('cidade').value=(conteudo.localidade);
-        document.getElementById('estado').value=(conteudo.uf);
+
+
     }
 }

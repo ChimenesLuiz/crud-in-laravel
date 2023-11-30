@@ -16,24 +16,24 @@
       </div>
       <div class="col-12">
         <label for="username" class="form-label">Produto</label>
-        <select class="form-select" name="id_product">
+        <select class="form-select" name="id_product" id="product">
           @foreach ($product_data as $row)
-          <option value="{{$row -> id}}">{{$row -> name}}</option>  
+          <option productAmount="{{$row -> amount}}" productValue="{{$row -> value}}" value="{{$row -> id}}">{{$row -> name}}</option>  
           @endforeach
 
         </select>
       </div>
       <div class="col-sm-8">
         <label for="firstName" class="form-label">Quantidade</label>
-        <input type="text" class="form-control" id="firstName" placeholder="" value="" name="amount">
-
+        <select class="form-select" id="transactionAmount" name="amount" onchange="calc_total_transaction(this.value);"></select>
+        <div id="msgerror" style="position: absolute"></div>
       </div>
 
       <div class="col-sm-4">
         <label for="username" class="form-label">Total</label>
         <div class="input-group has-validation">
           <span class="input-group-text">R$</span>
-          <input type="text" class="form-control" id="total"  name="total">
+          <input type="text" class="form-control total" id="total"  name="total" value="">
         </div>
       </div>
       

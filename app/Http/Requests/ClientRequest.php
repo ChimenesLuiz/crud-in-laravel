@@ -27,16 +27,15 @@ class ClientRequest extends FormRequest
             'name' => 'required',
             'last_name' => '',
             'email' => 'required|email:filter,rfc,dns',
-            'phone' => 'required|telefone_com_ddd',
+            'phone' => 'required|celular_com_ddd',
             'phone2' => '',
             'cpf' => [new FormatoCpf],
             'nascimento' => ['required'],
-            'cep' => ['required', new FormatoCep],
             'sexo' => ['required'],
-            'endereco' => '',
-            'cidade' => '',
-            'estado' => ''
-
+            'cep' => ['required'],
+            'endereco' => ['required'],
+            'estado' => ['required'],
+            'cidade' => ['required']
         ];
     }
 

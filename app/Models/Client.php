@@ -20,8 +20,8 @@ class Client extends Model
         'sexo',
         'cep',
         'endereco',
-        'cidade',
-        'estado'
+        'estado',
+        'cidade'
     ];
 
     public function transactions() : HasMany

@@ -23,8 +23,8 @@ return new class extends Migration
             $table->enum('sexo', ['masculino', 'feminino', 'apache'])  -> nullable();
             $table->string('cep', 8) -> nullable();
             $table->string('endereco', 150)  -> nullable();
-            $table->string('cidade', 80)  -> nullable();
             $table->char('estado', 2)  -> nullable();
+            $table->string('cidade', 80)  -> nullable();
             
             
             $table->timestamps();

@@ -23,25 +23,25 @@
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Telefone 1</label>
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="(99) 9 9999-9999">
+        <input type="text" class="form-control phone"  name="phone" placeholder="(99) 99999-9999">
       </div>
 
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Telefone 2</label>
-        <input type="text" class="form-control" id="phone2" name="phone2" placeholder="(99) 9 9999-9999">
+        <input type="text" class="form-control phone" name="phone2" placeholder="(99) 99999-9999">
       </div>
 
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00">
+        <input type="text" class="form-control cpf"  name="cpf" placeholder="000.000.000-00">
       </div>
 
       <div class="col-sm-6">
         {{-- <span class="text-muted">(Opcional)</span> --}}
         <label for="email" class="form-label">Data de Nascimento</label>
-        <input class="form-control" name="nascimento" id="date" placeholder="DD-MM-YYYY">
+        <input class="form-control date" name="nascimento" placeholder="DD-MM-YYYY">
       </div>
 
       <div class="col-12">
@@ -56,20 +56,20 @@
       
       <div class="col-12">
         <label for="address" class="form-label">CEP</label>
-        <input type="text" class="form-control" id="cep" name="cep" onblur="pesquisacep();" placeholder="00000-000">
+        <input type="text" class="form-control cep" id="cep" name="cep" onblur="pesquisacep();" placeholder="00000-000">
         <div id="msgerror" style="position: absolute"></div>
       </div>
 
 
       <div class="col-12">
         <label for="address" class="form-label">Endereco</label>
-        <input type="text" class="form-control" id="endereco" name="endereco" >
+        <input type="text" class="form-control" id="endereco" name="endereco">
       </div>
 
       <div class="col-6">
         <label for="address" class="form-label">Estado</label>
 
-        <select class="form-select" id="estado" name="estado" >
+        <select class="form-select" id="estado" name="estado">
           <option value="AC" selected></option>
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
@@ -115,4 +115,4 @@
       <input class="w-25 btn btn-primary" type="submit" value="Cadastrar">
     </div>
   </form>
-  <script src="{{asset('js/pesquisacep.js')}}"></script>
+  

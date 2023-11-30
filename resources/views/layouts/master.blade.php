@@ -22,21 +22,11 @@
 
         <script src="{{asset('assets/jquery.js')}}"></script>
         <script src="{{asset('assets/jquery.mask.min.js')}}"></script>
-        <script src="{{asset('js/maskingOn.js')}}"></script>
 
 
-        <meta charset="utf-8" />
+        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
-    <script>
-        $(document).ready(function(){
-            maskingOnClient();
-            maskingOnProduct();
-            maskingOnSupplier();
-            maskingOnTransaction();
-
-        })
-    </script>
     <body class="w-100 h-100" style="background-color: #dbdbdb;">
         @include('layouts.nav')
         <main class="container-fluid w-100">
@@ -72,6 +62,6 @@
                     @yield('transaction.edit')
             </section>
         </main>
-
     </body>
+    
 </html>
