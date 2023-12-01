@@ -29,10 +29,12 @@
     </head>
     <body class="w-100 h-100" style="background-color: #dbdbdb;">
         @include('layouts.nav')
-        <main class="container-fluid w-100">
-            <section class="container h-100 w-100 px-3 py-5">
+        <main class="container-fluid w-100 h-100">
+            <section class="container h-100 w-100 py-3">
                     @include('layouts.alerts')
                     @yield('login.index')
+
+                    @yield('dash.index')
 
                     @yield('account.edit')
                     @yield('account.password')

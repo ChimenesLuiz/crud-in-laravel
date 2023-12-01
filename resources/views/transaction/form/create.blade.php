@@ -17,6 +17,7 @@
       <div class="col-12">
         <label for="username" class="form-label">Produto</label>
         <select class="form-select" name="id_product" id="product">
+          <option value="" selected>Escolha um produto</option>
           @foreach ($product_data as $row)
           <option productAmount="{{$row -> amount}}" productValue="{{$row -> value}}" value="{{$row -> id}}">{{$row -> name}}</option>  
           @endforeach
@@ -36,6 +37,7 @@
           <input type="text" class="form-control total" id="total"  name="total" value="">
         </div>
       </div>
+      <input type="hidden" id="new_amount" name="new_amount" value="">
       
 
     <hr class="my-4">

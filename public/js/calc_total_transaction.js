@@ -5,6 +5,8 @@ transactionAmount.innerHTML = '';
 var msgerror = document.getElementById('msgerror')
 var productValue;
 var productAmount;
+var idProduct;
+var current_id;
 
 var selectedProduct = product.options[product.selectedIndex];
 productValue = selectedProduct.getAttribute('productValue');
@@ -37,6 +39,8 @@ product.addEventListener('change', function(){
     selectedProduct = product.options[product.selectedIndex];
     productValue = selectedProduct.getAttribute('productValue');
     productAmount = selectedProduct.getAttribute('productAmount');
+    idProduct = document.getElementById('product');
+    current_id = idProduct.value;
     total.value = '';
     transactionAmount.value = '';
 
@@ -44,12 +48,20 @@ product.addEventListener('change', function(){
     showOptions();
 })
 
-showOptions();
-
 
 function calc_total_transaction(thisparam)
 {
     tot = (thisparam * productValue)
     $('#total').val(tot)
+    calc_new_amount(thisparam)
 }
-    
+
+function calc_new_amount(current_amount)
+{
+    var new_amount = (productAmount - current_amount);
+    console.log(current_id)
+    $('#new_amount').val(new_amount + '_' + current_id);
+}
+
+
+showOptions();

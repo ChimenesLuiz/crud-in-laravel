@@ -49,10 +49,13 @@ class ProductController extends Controller
         )
         ->leftJoin('products', 'products.id_supplier', '=', 'suppliers.id')
         ->get();
-        // dd($data);
+
+        $supplier = $this -> supplier -> all();
+        // $product = $this -> supplier -> all();
+        // dd($supplier);
 
         
-        return view('product.index') -> with('data', $data);
+        return view('product.index') -> with(['supplier' => $supplier, 'data' => $data]);
     }
 
     /**
@@ -71,7 +74,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $validated = $request -> validATED();
+        $validated = $request -> validated();
         $validated['value'] = str_replace(array('.',',','/'), "", $validated['value']);
         // dd($validated);
         $this -> product -> create($validated); 

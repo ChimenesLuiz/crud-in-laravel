@@ -58,7 +58,19 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $this -> transaction -> create($request -> except(['_token', 'btn_submit'])); 
+        // dd($request);
+        $amountid = $request -> new_amount;
+        $valores = explode("_", $amountid);
+
+        $new_amount = $valores[0];
+        $id = $valores[1];
+
+        $this -> transaction -> create($request -> except(['_token', 'btn_submit', 'new_amount'])); 
+
+
+        $object = $this -> product::find($id);
+        $object -> amount = $new_amount;
+        $object -> save();
 
         return redirect() -> route('transaction.index') -> with('message', 'Cadastrado com Sucesso');
     }

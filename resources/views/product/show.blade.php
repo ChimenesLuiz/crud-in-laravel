@@ -9,7 +9,6 @@
             <thead>
             <tr>
                 <th scope="col">Produto</th>
-                {{-- <th scope="col">Categoria</th> --}}
                 <th scope="col">Valor</th>
                 <th scope="col">Estoque</th>
                 <th scope="col">Fornecedor</th>

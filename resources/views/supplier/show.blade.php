@@ -8,21 +8,20 @@
         <thead>
         <tr>
             <th scope="col">Nome</th>
-            {{-- <th scope="col">Categoria</th> --}}
             <th scope="col">CNPJ</th>
             <th scope="col">Acoes</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($data as $row)
+        @foreach ($supplier as $row)
             <tr>
-                <td >{{$row -> supplier_name}}</td>
-                <td class="cnpj">{{$row -> supplier_cnpj}}</td>
+                <td >{{$row -> name}}</td>
+                <td class="cnpj">{{$row -> cnpj}}</td>
                 <td>
-                    <a href="{{route('supplier.edit', ['id' => $row -> supplier_id])}}" class="link-dark mx-1">
+                    <a href="{{route('supplier.edit', ['id' => $row -> id])}}" class="link-dark mx-1">
                         <i class="bi bi-pencil-square" style="font-size: 20px;"></i>
                     </a>
-                    <a href="{{route('supplier.destroy', ['id' => $row -> supplier_id])}}" class="link-dark mx-1">
+                    <a href="{{route('supplier.destroy', ['id' => $row -> id])}}" class="link-dark mx-1">
                         <i class="bi bi-trash" style="font-size: 20px; color:red;"></i>
                     </a>
                 </td> 
